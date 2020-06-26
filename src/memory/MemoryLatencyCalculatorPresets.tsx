@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 
 export type MemoryType = "SDR" | "DDR";
@@ -17,28 +17,28 @@ const presets: MemoryLatencyPreset[] = [
 ];
 
 type Props = {
-    onChange: (val: typeof presets[number]) => void
+    value: MemoryLatencyPreset
+    onChange: (val: MemoryLatencyPreset) => void
 };
 
 const MemoryLatencyCalculatorPresets: React.FunctionComponent<Props> = (props) => {
-    const [presetIdx, setPresetIdx] = useState(2);
+    const { value, onChange } = props;
+
+    const presetIdx = presets.findIndex(preset => preset.type === value.type && preset.frequency === value.frequency && preset.timing === value.timing);
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        const presetIdx = e.target.value as number;
-        setPresetIdx(presetIdx);
-        const preset = presets[presetIdx];
-        props.onChange(preset);
+        const preset = presets[e.target.value as number];
+        onChange(preset);
     };
 
     return (
         <FormControl>
-            <InputLabel id="demo-simple-select-label">Presets</InputLabel>
+            <InputLabel>Presets</InputLabel>
             <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
                 value={presetIdx}
                 onChange={handleChange}
             >
+                <MenuItem disabled value={-1}>Custom</MenuItem>
                 {presets.map((preset, i) => <MenuItem key={i} value={i}>{preset.type} {preset.frequency}MHz CL{preset.timing}</MenuItem>)}
             </Select>
         </FormControl>

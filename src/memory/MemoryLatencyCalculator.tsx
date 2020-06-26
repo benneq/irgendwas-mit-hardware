@@ -1,36 +1,38 @@
 import React, { useState } from 'react';
-import { Grid, InputAdornment, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+import { Grid, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import MemoryLatencyCalculatorPresets, { MemoryLatencyPreset, MemoryType } from './MemoryLatencyCalculatorPresets';
 import NumberField from '../util/NumberField';
 
 const MemoryLatencyCalculator: React.FunctionComponent = () => {
-    const [type, setType] = useState<MemoryType>('DDR');
-    const [frequency, setFrequency] = useState(3200);
-    const [timing, setTiming] = useState(16);
+    const [value, setValue] = useState<MemoryLatencyPreset>({ type: 'DDR', frequency: 3200, timing: 16 });
 
-    const clockCycleTime = type === "SDR" ? frequency / 1000 : frequency / 2000;
+    const clockCycleTime = value.type === "SDR" ? value.frequency / 1000 : value.frequency / 2000;
     const clockCyclesPerNs = 1 / clockCycleTime;
-    const latency = timing * clockCyclesPerNs;
+    const latency = value.timing * clockCyclesPerNs;
 
-    const handleTypeChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        setType(e.target.value as MemoryType)
+    const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        setValue(val => ({...val, type: e.target.value as MemoryType}));
+    };
+
+    const handleFrequencyChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        setValue(val => ({...val, frequency: e.target.value as number}));
+    };
+
+    const handleTimingChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        setValue(val => ({...val, timing: e.target.value as number}));
     };
 
     const handlePresetChange = (val: MemoryLatencyPreset) => {
-        setType(val.type);
-        setFrequency(val.frequency);
-        setTiming(val.timing);
+        setValue(val);
     };
 
     return (
         <Grid container spacing={2}>
             <Grid item>
                 <FormControl>
-                    <InputLabel id="demo-simple-select-label">Presets</InputLabel>
+                    <InputLabel>Presets</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={type}
+                        value={value.type}
                         onChange={handleTypeChange}
                     >
                         <MenuItem value="SDR">SDR</MenuItem>
@@ -42,11 +44,8 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                 <NumberField
                     label="Speichertakt"
                     helperText="In MHz"
-                    InputProps={{
-                        endAdornment: <InputAdornment position="end">MHz</InputAdornment>
-                    }}
-                    value={frequency}
-                    onChange={e => setFrequency(e.target.value)}
+                    value={value.frequency}
+                    onChange={handleFrequencyChange}
                 />
             </Grid>
             <Grid item>
@@ -69,20 +68,23 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                 <NumberField
                     label="Timing"
                     helperText="Taktzyklen"
-                    value={timing}
-                    onChange={e => setTiming(e.target.value)}
+                    value={value.timing}
+                    onChange={handleTimingChange}
                 />
             </Grid>
             <Grid item>
                 <NumberField
-                    label="Latenz"
+                    label="Effektive Latenz"
                     helperText="In ns"
                     disabled
                     value={latency}
                 />
             </Grid>
             <Grid item>
-                <MemoryLatencyCalculatorPresets onChange={handlePresetChange} />
+                <MemoryLatencyCalculatorPresets
+                    value={value}
+                    onChange={handlePresetChange}
+                />
             </Grid>
         </Grid>
     );

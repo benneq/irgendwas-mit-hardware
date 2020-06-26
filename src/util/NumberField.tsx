@@ -3,14 +3,16 @@ import { TextField, TextFieldProps } from '@material-ui/core';
 
 type Props = Omit<TextFieldProps, 'value' | 'onChange'> & {
     value: number
-    onChange?: (e: Omit<React.ChangeEvent<HTMLInputElement>, 'target'> & { target: { value: number }}) => void
+    onChange?: (e: React.ChangeEvent<{ value: unknown }>) => void
 }
 
 const NumberField: React.FunctionComponent<Props> = (props) => {
-    const value = isFinite(props.value) ? props.value.toString() : '';
+    const { value, onChange } = props;
+
+    const textFieldValue = isFinite(value) ? value.toString() : '';
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.onChange && props.onChange({
+        onChange && onChange({
             ...e,
             target: {
                 ...e.target,
@@ -22,7 +24,7 @@ const NumberField: React.FunctionComponent<Props> = (props) => {
     return (
         <TextField
             {...props}
-            value={value}
+            value={textFieldValue}
             onChange={handleChange}
         />
     );
