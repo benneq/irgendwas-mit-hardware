@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
-import MemoryLatencyCalculatorPresets, { MemoryLatencyPreset, MemoryType } from './MemoryLatencyCalculatorPresets';
+import MemoryLatencyCalculatorPresets from './MemoryLatencyCalculatorPresets';
 import NumberField from '../util/NumberField';
+import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
+import { MemoryType } from './model/memory-type.model';
 
 const MemoryLatencyCalculator: React.FunctionComponent = () => {
     const [value, setValue] = useState<MemoryLatencyPreset>({ type: 'DDR', frequency: 3200, timing: 16 });

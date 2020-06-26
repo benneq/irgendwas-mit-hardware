@@ -1,13 +1,6 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
-
-export type MemoryType = "SDR" | "DDR";
-
-export type MemoryLatencyPreset = {
-    type: MemoryType
-    frequency: number
-    timing: number
-}
+import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
 
 const presets: MemoryLatencyPreset[] = [
     { type: 'DDR', frequency: 2133, timing: 10 },
