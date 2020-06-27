@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
 import { memoryLatencyPresetOf } from './util/memory-latency.util';
+import SelectField from '../util/SelectField';
 
 const presets = [
     memoryLatencyPresetOf('DDR', 2133, 10),
@@ -18,24 +18,22 @@ type Props = {
 const MemoryLatencyCalculatorPresets: React.FunctionComponent<Props> = (props) => {
     const { value, onChange } = props;
 
-    const presetIdx = presets.findIndex(preset => preset.type === value.type && preset.frequency === value.frequency && preset.timing === value.timing);
+    const selectedPreset = presets.find(preset => preset.type === value.type && preset.frequency === value.frequency && preset.timing === value.timing)!;
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        const preset = presets[e.target.value as number];
-        onChange(preset);
+        onChange(e.target.value as MemoryLatencyPreset);
     };
 
     return (
-        <FormControl>
-            <InputLabel>Presets</InputLabel>
-            <Select
-                value={presetIdx}
-                onChange={handleChange}
-            >
-                <MenuItem disabled value={-1}>Custom</MenuItem>
-                {presets.map((preset, i) => <MenuItem key={i} value={i}>{preset.type} {preset.frequency}MHz CL{preset.timing}</MenuItem>)}
-            </Select>
-        </FormControl>
+        <SelectField<MemoryLatencyPreset>
+            label="Presets"
+            value={selectedPreset}
+            options={presets}
+            renderOption={preset => `${preset.type} ${preset.frequency}MHz CL${preset.timing}`}
+            onChange={handleChange}
+        >
+            Custom
+        </SelectField>
     );
 };
 

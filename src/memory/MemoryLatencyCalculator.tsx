@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Grid, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import MemoryLatencyCalculatorPresets from './MemoryLatencyCalculatorPresets';
 import NumberField from '../util/NumberField';
 import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
 import { MemoryType } from './model/memory-type.model';
 import { memoryLatencyPresetOf, calculateFrequencyMultiplier, calculateClockCycleTime, calculateClockCyclesPerNs, calculateLatency } from './util/memory-latency.util';
+import SelectField from '../util/SelectField';
 
 const MemoryLatencyCalculator: React.FunctionComponent = () => {
     const [value, setValue] = useState<MemoryLatencyPreset>(memoryLatencyPresetOf('DDR', 3200, 16));
@@ -34,16 +35,12 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
     return (
         <Grid container spacing={2}>
             <Grid item>
-                <FormControl>
-                    <InputLabel>Typ</InputLabel>
-                    <Select
-                        value={type}
-                        onChange={handleTypeChange}
-                    >
-                        <MenuItem value="SDR">SDR</MenuItem>
-                        <MenuItem value="DDR">DDR</MenuItem>
-                    </Select>
-                </FormControl>
+                <SelectField<MemoryType>
+                    label="Typ"
+                    value={type}
+                    options={["SDR", "DDR"]}
+                    onChange={handleTypeChange}
+                />
             </Grid>
             <Grid item>
                 <NumberField
