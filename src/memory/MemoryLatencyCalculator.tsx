@@ -4,13 +4,16 @@ import MemoryLatencyCalculatorPresets from './MemoryLatencyCalculatorPresets';
 import NumberField from '../util/NumberField';
 import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
 import { MemoryType } from './model/memory-type.model';
+import { memoryLatencyPresetOf, calculateFrequencyMultiplier, calculateClockCycleTime, calculateClockCyclesPerNs, calculateLatency } from './util/memory-latency.util';
 
 const MemoryLatencyCalculator: React.FunctionComponent = () => {
-    const [value, setValue] = useState<MemoryLatencyPreset>({ type: 'DDR', frequency: 3200, timing: 16 });
+    const [value, setValue] = useState<MemoryLatencyPreset>(memoryLatencyPresetOf('DDR', 3200, 16));
+    const { type, frequency, timing } = value;
 
-    const clockCycleTime = value.type === "SDR" ? value.frequency / 1000 : value.frequency / 2000;
-    const clockCyclesPerNs = 1 / clockCycleTime;
-    const latency = value.timing * clockCyclesPerNs;
+    const frequencyMultiplier = calculateFrequencyMultiplier(type);
+    const clockCycleTime = calculateClockCycleTime(frequency, frequencyMultiplier);
+    const clockCyclesPerNs = calculateClockCyclesPerNs(clockCycleTime);
+    const latency = calculateLatency(timing, clockCyclesPerNs);
 
     const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         setValue(val => ({...val, type: e.target.value as MemoryType}));
@@ -32,9 +35,9 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
         <Grid container spacing={2}>
             <Grid item>
                 <FormControl>
-                    <InputLabel>Presets</InputLabel>
+                    <InputLabel>Typ</InputLabel>
                     <Select
-                        value={value.type}
+                        value={type}
                         onChange={handleTypeChange}
                     >
                         <MenuItem value="SDR">SDR</MenuItem>
@@ -46,7 +49,7 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                 <NumberField
                     label="Speichertakt"
                     helperText="In MHz"
-                    value={value.frequency}
+                    value={frequency}
                     onChange={handleFrequencyChange}
                 />
             </Grid>
@@ -70,7 +73,7 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                 <NumberField
                     label="Timing"
                     helperText="Taktzyklen"
-                    value={value.timing}
+                    value={timing}
                     onChange={handleTimingChange}
                 />
             </Grid>

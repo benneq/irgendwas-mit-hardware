@@ -1,12 +1,13 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { MemoryLatencyPreset } from './model/memory-latency-preset.model';
+import { memoryLatencyPresetOf } from './util/memory-latency.util';
 
-const presets: MemoryLatencyPreset[] = [
-    { type: 'DDR', frequency: 2133, timing: 10 },
-    { type: 'DDR', frequency: 2400, timing: 12 },
-    { type: 'DDR', frequency: 3200, timing: 16 },
-    { type: 'DDR', frequency: 3600, timing: 18 },
+const presets = [
+    memoryLatencyPresetOf('DDR', 2133, 10),
+    memoryLatencyPresetOf('DDR', 2400, 12),
+    memoryLatencyPresetOf('DDR', 3200, 16),
+    memoryLatencyPresetOf('DDR', 3600, 18),
 ];
 
 type Props = {
