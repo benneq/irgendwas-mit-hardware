@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { CssBaseline, AppBar, Toolbar, IconButton, Typography, Drawer, useMediaQuery, Fab } from '@material-ui/core';
 import { Menu as MenuIcon, Search as SearchIcon, KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import Navigation from './Navigation';
 import ScrollTop from './ScrollTop';
 import HideOnScroll from './HideOnScroll';
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -51,8 +52,13 @@ type Props = {
 const Layout: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
