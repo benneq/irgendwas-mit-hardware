@@ -88,7 +88,7 @@ const Layout: React.FunctionComponent<Props> = (props) => {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <nav className={classes.drawer} aria-label="mailbox folders">
+      <nav className={classes.drawer}>
         <Drawer
           variant={isMobile ? "temporary" : "permanent"}
           anchor={isMobile && theme.direction === 'rtl' ? 'right' : 'left'}
