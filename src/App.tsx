@@ -15,7 +15,7 @@ const App: React.FunctionComponent = () => {
         <Route path="/home" component={Home} />
         <Route path="/usb" component={USB} />
         <Route path="/memory" component={MemoryLatencyCalculator} />
-        <Route exact path="/network" component={NetworkCable} />
+        <Route exact path="/network/cable" component={NetworkCable} />
         <Route exact path="/network/wifi" component={NetworkWiFiStandards} />
       </Switch>
     </Layout>

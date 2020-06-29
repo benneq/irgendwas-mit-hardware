@@ -1,7 +1,18 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Divider, List } from '@material-ui/core';
-import NavigationItem from './NavigationItem';
+import { Divider } from '@material-ui/core';
+import NavigationList from './NavigationList';
+
+
+
+const menu = [
+    { text: 'Home', to: '/home' },
+    { text: 'Netzwerk', children: [
+        { text: 'Kabel', to: '/network/cable' },
+        { text: 'WLAN / Wi-Fi', to: '/network/wifi' },
+    ] },
+    { text: 'RAM', to: '/memory' },
+];
 
 const useStyles = makeStyles(theme => ({
   // necessary for content to be below app bar
@@ -15,28 +26,10 @@ const Navigation: React.FunctionComponent = () => {
     <>
         <div className={classes.toolbar} />
         <Divider />
-        <List>
-            <NavigationItem
-                text="Home"
-                to="/home"
-            />
-            <NavigationItem
-                text="Netzwerk"
-                to="/network"
-            />
-            <NavigationItem
-                text="WLAN / Wi-Fi"
-                to="/network/wifi"
-            />
-            <NavigationItem
-                text="RAM"
-                to="/memory"
-            />
-            <NavigationItem
-                text="USB"
-                to="/usb"
-            />
-        </List>
+        <NavigationList
+            component="nav"
+            value={menu}
+        />
     </>
   );
 };
