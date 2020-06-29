@@ -1,7 +1,7 @@
 import React from 'react';
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Toolbar, Typography, makeStyles } from '@material-ui/core';
 import { networkCableCategoryOf } from './util/network-cable-category.util';
 import NetworkCableShielding from './NetworkCableShielding';
+import SimpleTable from '../util/SimpleTable';
 
 const networkCableCategories = [
     networkCableCategoryOf('CAT 5', '100 MHz', ['100 Mbit/s (100BASE-TX)'], 'UTP', ''),
@@ -13,44 +13,21 @@ const networkCableCategories = [
     networkCableCategoryOf('CAT 8', '2000 MHz', ['25 Gbit/s (25GBASE-T)', '40 Gbit/s (40GBASE-T)'], 'S/FTP', ''),
 ];
 
-const useStyles = makeStyles(theme => ({
-    toolbar: {
-        paddingLeft: theme.spacing(2),
-    },
-}));
-
 const NetworkCable: React.FunctionComponent = () => {
-    const classes = useStyles();
-
     return (
         <>
-            <Toolbar className={classes.toolbar}><Typography variant="h6">Kategorien</Typography></Toolbar>
-            <TableContainer>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Kategorie</TableCell>
-                            <TableCell>Bandbreite</TableCell>
-                            <TableCell>Übertragungsrate</TableCell>
-                            <TableCell>Schirmung</TableCell>
-                            <TableCell>Anmerkungen</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {networkCableCategories.map((cat, i) =>
-                            <TableRow key={i}>
-                                <TableCell component="th" scope="row">{cat.name}</TableCell>
-                                <TableCell>{cat.bandwidth}</TableCell>
-                                <TableCell>{cat.transferRates.map((transferRate, i) => <div key={i}>{transferRate}</div>)}</TableCell>
-                                <TableCell>{cat.shielding}</TableCell>
-                                <TableCell>{cat.notes}</TableCell>
-                            </TableRow>  
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <SimpleTable
+                caption="Kategorien"
+                columns={[
+                    { id: 'name', header: 'Kategorie', render: (row) => row.name },
+                    { id: 'bandwidth', header: 'Bandbreite', render: (row) => row.bandwidth },
+                    { id: 'transferRates', header: 'Übertragungsrate', render: (row) => row.transferRates.map((transferRate, i) => <div key={i}>{transferRate}</div>) },
+                    { id: 'shielding', header: 'Schirmung', render: (row) => row.shielding },
+                    { id: 'notes', header: 'Anmerkungen', render: (row) => row.notes },
+                ]}
+                value={networkCableCategories}
+            />
 
-            <Toolbar className={classes.toolbar}><Typography variant="h6">Schirmung</Typography></Toolbar>
             <NetworkCableShielding />
         </>
     );

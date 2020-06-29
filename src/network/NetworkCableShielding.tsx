@@ -1,37 +1,29 @@
 import React from 'react';
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import SimpleTable from '../util/SimpleTable';
 
 const networkCableShieldings = [
     { designation: 'U/UTP', cable: '', pair: '' },
-    { designation: 'S/UTP', cable: 'Drahtgeflecht', pair: '' },
     { designation: 'U/FTP', cable: '', pair: 'Folie' },
-    { designation: 'S/FTP', cable: 'Drahtgeflecht', pair: 'Folie' },
+    { designation: 'F/UTP', cable: 'Folie', pair: '' },
+    { designation: 'S/UTP', cable: 'Drahtgeflecht', pair: '' },
+    { designation: 'SF/UTP', cable: 'Drahtgeflecht und Folie', pair: '' },
     { designation: 'F/FTP', cable: 'Folie', pair: 'Folie' },
+    { designation: 'S/FTP', cable: 'Drahtgeflecht', pair: 'Folie' },
     { designation: 'SF/FTP', cable: 'Drahtgeflecht und Folie', pair: 'Folie' },
 ];
 
 const NetworkCableShielding: React.FunctionComponent = () => {
     return (
-        <TableContainer>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Bezeichnung</TableCell>
-                        <TableCell>Gesamtschirm</TableCell>
-                        <TableCell>Adernpaarschirm</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {networkCableShieldings.map((shielding, i) =>
-                        <TableRow key={i}>
-                            <TableCell component="th" scope="row">{shielding.designation}</TableCell>
-                            <TableCell>{shielding.cable}</TableCell>
-                            <TableCell>{shielding.pair}</TableCell>
-                        </TableRow>  
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <SimpleTable
+            caption="Schirmung"
+            columns={[
+                { id: 'designation', header: 'Bezeichnung (ISO/IEC 11801)', render: (row) => row.designation },
+                { id: 'cable', header: 'Gesamtschirm', render: (row) => row.cable },
+                { id: 'pair', header: 'Adernpaarschirm', render: (row) => row.pair },
+            ]}
+            value={networkCableShieldings}
+            legend="U = ungeschirmt, F = Folie, S = Drahtgeflecht, SF = Drahtgeflecht und Folie, TP = Twisted Pair"
+        />
     );
 };
 

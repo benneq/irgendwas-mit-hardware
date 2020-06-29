@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import SimpleTable from '../util/SimpleTable';
 
 const usbTypes = [
     { name: 'Low Speed', transferMode: 'USB 1.0', oldNames: [], transferRate: '1,5 Mbit/s', notes: '' },
@@ -12,30 +12,17 @@ const usbTypes = [
 
 const USB: React.FunctionComponent = () => {
     return (
-        <TableContainer>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Bezeichnung</TableCell>
-                        <TableCell>Spezifikation</TableCell>
-                        <TableCell>Alte Bezeichnungen</TableCell>
-                        <TableCell>Übertragungsrate</TableCell>
-                        <TableCell>Anmerkungen</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {usbTypes.map((type, i) =>
-                        <TableRow key={i}>
-                            <TableCell component="th" scope="row">{type.name}</TableCell>
-                            <TableCell>{type.transferMode}</TableCell>
-                            <TableCell>{type.oldNames.map((oldName, i) => <div key={i}>{oldName}</div>)}</TableCell>
-                            <TableCell>{type.transferRate}</TableCell>
-                            <TableCell>{type.notes}</TableCell>
-                        </TableRow>  
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <SimpleTable
+            caption="USB"
+            columns={[
+                { id: 'name', header: 'Bezeichnung', render: (val) => val.name },
+                { id: 'transferMode', header: 'Spezifikation', render: (val) => val.transferMode },
+                { id: 'oldNames', header: 'Alte Bezeichnungen', render: (val) => val.oldNames.map((oldName, i) => <div key={i}>{oldName}</div>) },
+                { id: 'transferRate', header: 'Übertragungsrate', render: (val) => val.transferRate },
+                { id: 'notes', header: 'Anmerkungen', render: (val) => val.notes },
+            ]}
+            value={usbTypes}
+        />
     );
 };
 
