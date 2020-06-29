@@ -12,6 +12,7 @@ const menu = [
         { text: 'WLAN / Wi-Fi', to: '/network/wifi' },
     ] },
     { text: 'RAM', to: '/memory' },
+    { text: 'USB', to: '/usb' }
 ];
 
 const useStyles = makeStyles(theme => ({

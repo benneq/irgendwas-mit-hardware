@@ -19,7 +19,7 @@ const NetworkCable: React.FunctionComponent = () => {
             <SimpleTable
                 caption="Kategorien"
                 columns={[
-                    { id: 'name', header: 'Kategorie', render: (row) => row.name },
+                    { id: 'name', header: 'Bezeichnung', render: (row) => row.name },
                     { id: 'bandwidth', header: 'Bandbreite', render: (row) => row.bandwidth },
                     { id: 'transferRates', header: 'Übertragungsrate', render: (row) => row.transferRates.map((transferRate, i) => <div key={i}>{transferRate}</div>) },
                     { id: 'shielding', header: 'Schirmung', render: (row) => row.shielding },
