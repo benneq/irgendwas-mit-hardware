@@ -5,16 +5,18 @@ import MemoryLatencyCalculator from './memory/MemoryLatencyCalculator';
 import Home from './home/Home';
 import NetworkCable from './network/NetworkCable';
 import USB from './usb/USB';
+import NetworkWiFiStandards from './network/wifi/NetworkWiFiStandards';
 
 const App: React.FunctionComponent = () => {
   return (
     <Layout>
       <Switch>
-        <Redirect exact={true} from="/" to="/home" />
+        <Redirect exact from="/" to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/usb" component={USB} />
         <Route path="/memory" component={MemoryLatencyCalculator} />
-        <Route path="/network" component={NetworkCable} />
+        <Route exact path="/network" component={NetworkCable} />
+        <Route exact path="/network/wifi" component={NetworkWiFiStandards} />
       </Switch>
     </Layout>
   );

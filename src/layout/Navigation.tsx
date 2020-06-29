@@ -25,6 +25,10 @@ const Navigation: React.FunctionComponent = () => {
                 to="/network"
             />
             <NavigationItem
+                text="WLAN / Wi-Fi"
+                to="/network/wifi"
+            />
+            <NavigationItem
                 text="RAM"
                 to="/memory"
             />
