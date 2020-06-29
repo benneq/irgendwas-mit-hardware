@@ -4,6 +4,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 import MemoryLatencyCalculator from './memory/MemoryLatencyCalculator';
 import Home from './home/Home';
 import NetworkCable from './network/NetworkCable';
+import USB from './usb/USB';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FunctionComponent = () => {
       <Switch>
         <Redirect exact={true} from="/" to="/home" />
         <Route path="/home" component={Home} />
+        <Route path="/usb" component={USB} />
         <Route path="/memory" component={MemoryLatencyCalculator} />
         <Route path="/network" component={NetworkCable} />
       </Switch>

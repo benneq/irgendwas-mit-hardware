@@ -28,6 +28,10 @@ const Navigation: React.FunctionComponent = () => {
                 text="RAM"
                 to="/memory"
             />
+            <NavigationItem
+                text="USB"
+                to="/usb"
+            />
         </List>
     </>
   );
