@@ -6,6 +6,7 @@ import Home from './home/Home';
 import NetworkCable from './network/NetworkCable';
 import USB from './usb/USB';
 import NetworkWiFiStandards from './network/wifi/NetworkWiFiStandards';
+import PCIeStandards from './pcie/PCIeStandards';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FunctionComponent = () => {
         <Route path="/memory" component={MemoryLatencyCalculator} />
         <Route exact path="/network/cable" component={NetworkCable} />
         <Route exact path="/network/wifi" component={NetworkWiFiStandards} />
+        <Route path="/pcie" component={PCIeStandards} />
       </Switch>
     </Layout>
   );
