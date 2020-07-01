@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b483b1fd9b8f2f8ea6f7433a0748061",
+    "revision": "fd4136a5cdafba67cc180caa5a38c22f",
     "url": "/irgendwas-mit-hardware/index.html"
   },
   {
-    "revision": "a3dc4222d3533507160a",
-    "url": "/irgendwas-mit-hardware/static/js/2.b07807d0.chunk.js"
+    "revision": "3f6279d051913ead40f6",
+    "url": "/irgendwas-mit-hardware/static/js/2.1968014a.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/irgendwas-mit-hardware/static/js/2.b07807d0.chunk.js.LICENSE.txt"
+    "url": "/irgendwas-mit-hardware/static/js/2.1968014a.chunk.js.LICENSE.txt"
   },
   {
     "revision": "c4c8a4ff73aa436b7a46",
