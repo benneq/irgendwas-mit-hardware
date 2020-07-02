@@ -1,80 +1,13 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Toolbar, IconButton, Drawer, useMediaQuery, InputAdornment, fade, InputBase } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import { Toolbar, IconButton, Drawer, useMediaQuery } from '@material-ui/core';
 import { Search as SearchIcon, ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-
-const useStyles = makeStyles(theme => ({
-	search: {
-		position: 'relative',
-		borderRadius: theme.shape.borderRadius,
-		backgroundColor: fade(theme.palette.common.white, 0.15),
-		'&:hover': {
-			backgroundColor: fade(theme.palette.common.white, 0.25),
-		},
-		marginLeft: 0,
-		paddingLeft: theme.spacing(2),
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
-			marginLeft: theme.spacing(1),
-			width: 'auto',
-		},
-	},
-	inputRoot: {
-		color: 'inherit',
-	},
-	inputInput: {
-		padding: theme.spacing(1, 1, 1, 0),
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
-		},
-	},
-}));
-
-const SearchInput: React.FunctionComponent = () => {
-	const classes = useStyles();
-	const [search, setSearch] = React.useState('');
-
-	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value);
-	};
-
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if(e.key === 'Escape') {
-			setSearch('');
-			e.currentTarget.blur();
-		}
-	};
-
-	return (
-		<div className={classes.search}>
-			<InputBase
-				value={search}
-				onChange={handleSearchChange}
-				onKeyDown={handleKeyDown}
-				placeholder="Suche..."
-				fullWidth
-				classes={{
-					root: classes.inputRoot,
-					input: classes.inputInput,
-				}}
-				startAdornment={
-					<InputAdornment position="start">
-						<SearchIcon />
-					</InputAdornment>
-				}
-				inputProps={{ 'aria-label': 'search' }}
-			/>
-		</div>
-	)
-};
+import SearchSuggestions from './SearchSuggestions';
+import SearchInput from './SearchInput';
 
 const Search: React.FunctionComponent = () => {
 	const theme = useTheme();
+	const [searchTerm, setSearchTerm] = React.useState('');
 	const [open, setOpen] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
@@ -84,6 +17,22 @@ const Search: React.FunctionComponent = () => {
 
 	const handleDrawerClose = () => {
 		setOpen(false);
+	};
+
+	const handleSearchTermChange = (val: string) => {
+		setSearchTerm(val);
+	};
+
+	const handleSearchTermEnter = () => {
+		
+	};
+
+	const handleSuggestionClick = (val: string) => {
+
+	};
+
+	const handleInheritClick = (val: string) => {
+		setSearchTerm(val);
 	};
 
 	return (
@@ -100,13 +49,21 @@ const Search: React.FunctionComponent = () => {
 					>
 						<ArrowBackIcon />
 					</IconButton>
-					<SearchInput />
+					<SearchInput value={searchTerm} onChange={handleSearchTermChange} onEnter={handleSearchTermEnter} />
+					<IconButton edge="end" onClick={handleSearchTermEnter}>
+						<SearchIcon />
+					</IconButton>
 				</Toolbar>
+				<SearchSuggestions
+					value={[]}
+					onSuggestionClick={handleSuggestionClick}
+					onInheritClick={handleInheritClick}
+				/>
 			</Drawer>
 
 			{isMobile
-				? <IconButton aria-label="search" color="inherit" onClick={handleDrawerOpen}><SearchIcon /></IconButton>
-				: <SearchInput />
+				? <IconButton edge="end" aria-label="search" color="inherit" onClick={handleDrawerOpen}><SearchIcon /></IconButton>
+				: <SearchInput value={searchTerm} onChange={handleSearchTermChange} onEnter={handleSearchTermEnter} />
 			}
 		</>
 	);
