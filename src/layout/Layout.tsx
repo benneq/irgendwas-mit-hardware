@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { CssBaseline, AppBar, Toolbar, IconButton, Typography, Drawer, useMediaQuery, Fab } from '@material-ui/core';
-import { Menu as MenuIcon, Search as SearchIcon, KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
+import { Menu as MenuIcon, KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import Navigation from './Navigation';
 import ScrollTop from './ScrollTop';
 import HideOnScroll from './HideOnScroll';
 import { useLocation } from 'react-router-dom';
+import Search from './Search';
 
 const drawerWidth = 240;
 
@@ -82,9 +83,7 @@ const Layout: React.FunctionComponent<Props> = (props) => {
             <Typography variant="h6" noWrap className={classes.grow}>
               Irgendwas mit Hardware
             </Typography>
-            <IconButton aria-label="search" color="inherit">
-              <SearchIcon />
-            </IconButton>
+            <Search />
           </Toolbar>
         </AppBar>
       </HideOnScroll>
