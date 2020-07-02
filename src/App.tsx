@@ -9,19 +9,19 @@ import NetworkWiFiStandards from './network/wifi/NetworkWiFiStandards';
 import PCIeStandards from './pcie/PCIeStandards';
 
 const App: React.FunctionComponent = () => {
-  return (
-    <Layout>
-      <Switch>
-        <Redirect exact from="/" to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/usb" component={USB} />
-        <Route path="/memory" component={MemoryLatencyCalculator} />
-        <Route exact path="/network/cable" component={NetworkCable} />
-        <Route exact path="/network/wifi" component={NetworkWiFiStandards} />
-        <Route path="/pcie" component={PCIeStandards} />
-      </Switch>
-    </Layout>
-  );
+	return (
+		<Layout>
+			<Switch>
+				<Redirect exact from="/" to="/home" />
+				<Route path="/home" component={Home} />
+				<Route path="/usb" component={USB} />
+				<Route path="/memory" component={MemoryLatencyCalculator} />
+				<Route exact path="/network/cable" component={NetworkCable} />
+				<Route exact path="/network/wifi" component={NetworkWiFiStandards} />
+				<Route path="/pcie" component={PCIeStandards} />
+			</Switch>
+		</Layout>
+	);
 };
 
 export default App;
