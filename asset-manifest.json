@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/irgendwas-mit-hardware/static/js/main.a115aa49.chunk.js",
-    "main.js.map": "/irgendwas-mit-hardware/static/js/main.a115aa49.chunk.js.map",
+    "main.js": "/irgendwas-mit-hardware/static/js/main.c7c1491c.chunk.js",
+    "main.js.map": "/irgendwas-mit-hardware/static/js/main.c7c1491c.chunk.js.map",
     "runtime-main.js": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js",
     "runtime-main.js.map": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js.map",
-    "static/js/2.44bd5741.chunk.js": "/irgendwas-mit-hardware/static/js/2.44bd5741.chunk.js",
-    "static/js/2.44bd5741.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.44bd5741.chunk.js.map",
+    "static/js/2.85beb4b5.chunk.js": "/irgendwas-mit-hardware/static/js/2.85beb4b5.chunk.js",
+    "static/js/2.85beb4b5.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.85beb4b5.chunk.js.map",
     "index.html": "/irgendwas-mit-hardware/index.html",
-    "precache-manifest.0f94a291256f9d522d76f2ca903d1372.js": "/irgendwas-mit-hardware/precache-manifest.0f94a291256f9d522d76f2ca903d1372.js",
+    "precache-manifest.31d940b4e6125d8779c23193dedbb841.js": "/irgendwas-mit-hardware/precache-manifest.31d940b4e6125d8779c23193dedbb841.js",
     "service-worker.js": "/irgendwas-mit-hardware/service-worker.js",
-    "static/js/2.44bd5741.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.44bd5741.chunk.js.LICENSE.txt"
+    "static/js/2.85beb4b5.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.85beb4b5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.397ede97.js",
-    "static/js/2.44bd5741.chunk.js",
-    "static/js/main.a115aa49.chunk.js"
+    "static/js/2.85beb4b5.chunk.js",
+    "static/js/main.c7c1491c.chunk.js"
   ]
 }
