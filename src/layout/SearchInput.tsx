@@ -27,10 +27,11 @@ const useStyles = makeStyles(theme => ({
 		transition: theme.transitions.create('width'),
 		width: '100%',
 		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
+			// width: '12ch',
+			// '&:focus': {
+			// 	width: '20ch',
+			// },
+			width: '20ch'
 		},
 	},
 }));
@@ -41,7 +42,7 @@ type Props = {
 	onEnter: () => void
 }
 
-const SearchInput: React.FunctionComponent<Props> = (props) => {
+const SearchInput = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
 	const { value, onChange, onEnter } = props;
 
     const theme = useTheme();
@@ -57,7 +58,8 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
 			onChange('');
 			e.currentTarget.blur();
 		} else if(e.key === 'Enter') {
-            onEnter();
+			onEnter();
+			e.preventDefault();
 		}
     };
     
@@ -67,7 +69,7 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
 
 	return (
         <>
-            <div className={classes.search}>
+            <div className={classes.search} ref={ref}>
                 <Input
                     value={value}
                     onChange={handleSearchChange}
@@ -94,6 +96,6 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
             </div>
         </>
 	)
-};
+});
 
 export default SearchInput;

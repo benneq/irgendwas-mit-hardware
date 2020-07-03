@@ -30,8 +30,8 @@ const SearchSuggestions: React.FunctionComponent<Props> = (props) => {
 
 	return (
 		<List disablePadding>
-            {value.map(suggestion =>
-                <ListItem button onClick={handleSuggestionClick(suggestion)}>
+            {value.map((suggestion, i) =>
+                <ListItem key={i} button onClick={handleSuggestionClick(suggestion)}>
                     <ListItemText primary={suggestion} />
                     <ListItemSecondaryAction>
                         <IconButton edge="end" onClick={handleArrowClick(suggestion)}>
