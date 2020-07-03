@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { InputAdornment, fade, useTheme, useMediaQuery, Input } from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+import { Search as SearchIcon, Clear as ClearIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
 	search: {
@@ -50,7 +50,7 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange(e.target.value);
-	};
+    };
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if(e.key === 'Escape') {
@@ -59,7 +59,11 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
 		} else if(e.key === 'Enter') {
             onEnter();
 		}
-	};
+    };
+    
+    const handleClearClick = () => {
+        onChange('');
+    };
 
 	return (
         <>
@@ -78,6 +82,11 @@ const SearchInput: React.FunctionComponent<Props> = (props) => {
                     startAdornment={!isMobile && 
                         <InputAdornment position="start">
                             <SearchIcon />
+                        </InputAdornment>
+                    }
+                    endAdornment={isMobile && !!value &&
+                        <InputAdornment position="end" onClick={handleClearClick}>
+                            <ClearIcon />
                         </InputAdornment>
                     }
                     inputProps={{ 'aria-label': 'search' }}
