@@ -14,6 +14,7 @@ const menu = [
 	{ text: 'RAM', to: '/memory' },
 	{ text: 'USB', to: '/usb' },
 	{ text: 'PCIe', to: '/pcie' },
+	{ text: 'HDD', to: '/hdd' },
 ];
 
 const useStyles = makeStyles(theme => ({
