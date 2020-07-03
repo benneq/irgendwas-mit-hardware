@@ -4,6 +4,7 @@ import { Toolbar, IconButton, Drawer, useMediaQuery, Popper, Paper } from '@mate
 import { Search as SearchIcon, ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import SearchSuggestions from './SearchSuggestions';
 import SearchInput from './SearchInput';
+import { useHistory } from 'react-router-dom';
 
 const Search: React.FunctionComponent = () => {
 	const theme = useTheme();
@@ -11,6 +12,7 @@ const Search: React.FunctionComponent = () => {
 	const [open, setOpen] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 	const anchorEl = React.useRef<HTMLDivElement>(null);
+	const history = useHistory();
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -25,17 +27,24 @@ const Search: React.FunctionComponent = () => {
 	};
 
 	const handleSearchTermEnter = () => {
-		setSearchTerm('');
-		setOpen(false);
+		executeSearch(searchTerm);
 	};
 
 	const handleSuggestionClick = (val: string) => {
-		setSearchTerm('');
-		setOpen(false);
+		executeSearch(val);
 	};
 
 	const handleInheritClick = (val: string) => {
 		setSearchTerm(val);
+	};
+
+	const executeSearch = (val: string) => {
+		history.push({
+			pathname: '/search',
+			search: new URLSearchParams({q: val}).toString()
+		});
+		setSearchTerm('');
+		setOpen(false);
 	};
 
 	return (

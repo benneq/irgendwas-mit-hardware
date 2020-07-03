@@ -7,6 +7,7 @@ import NetworkCable from './network/NetworkCable';
 import USB from './usb/USB';
 import NetworkWiFiStandards from './network/wifi/NetworkWiFiStandards';
 import PCIeStandards from './pcie/PCIeStandards';
+import SearchResults from './search/SearchResults';
 
 const App: React.FunctionComponent = () => {
 	return (
@@ -14,6 +15,7 @@ const App: React.FunctionComponent = () => {
 			<Switch>
 				<Redirect exact from="/" to="/home" />
 				<Route path="/home" component={Home} />
+				<Route path="/search" component={SearchResults} />
 				<Route path="/usb" component={USB} />
 				<Route path="/memory" component={MemoryLatencyCalculator} />
 				<Route exact path="/network/cable" component={NetworkCable} />
