@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/irgendwas-mit-hardware/static/js/main.4fefa2d8.chunk.js",
-    "main.js.map": "/irgendwas-mit-hardware/static/js/main.4fefa2d8.chunk.js.map",
+    "main.js": "/irgendwas-mit-hardware/static/js/main.a5d44dc0.chunk.js",
+    "main.js.map": "/irgendwas-mit-hardware/static/js/main.a5d44dc0.chunk.js.map",
     "runtime-main.js": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js",
     "runtime-main.js.map": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js.map",
     "static/js/2.aa3c0b35.chunk.js": "/irgendwas-mit-hardware/static/js/2.aa3c0b35.chunk.js",
     "static/js/2.aa3c0b35.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.aa3c0b35.chunk.js.map",
     "index.html": "/irgendwas-mit-hardware/index.html",
-    "precache-manifest.7d3b58296bec275735692cf9b46426e3.js": "/irgendwas-mit-hardware/precache-manifest.7d3b58296bec275735692cf9b46426e3.js",
+    "precache-manifest.30960d8dc432c2a7a146a7d29a6cb53e.js": "/irgendwas-mit-hardware/precache-manifest.30960d8dc432c2a7a146a7d29a6cb53e.js",
     "service-worker.js": "/irgendwas-mit-hardware/service-worker.js",
     "static/js/2.aa3c0b35.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.aa3c0b35.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.397ede97.js",
     "static/js/2.aa3c0b35.chunk.js",
-    "static/js/main.4fefa2d8.chunk.js"
+    "static/js/main.a5d44dc0.chunk.js"
   ]
 }
