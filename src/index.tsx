@@ -3,12 +3,35 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import { MDXProvider } from '@mdx-js/react';
+import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider } from '@material-ui/core';
+
+const components = {
+    h1: (props: any) => <Typography variant="h1" {...props} />,
+    h2: (props: any) => <Typography variant="h2" {...props} />,
+    h3: (props: any) => <Typography variant="h3" {...props} />,
+    h4: (props: any) => <Typography variant="h4" {...props} />,
+    h5: (props: any) => <Typography variant="h5" {...props} />,
+    h6: (props: any) => <Typography variant="h6" {...props} />,
+    table: (props: any) => <Table {...props} />,
+    tr: (props: any) => {
+        const child = Array.isArray(props.children) ? props.children[0] : props.children;
+        return <TableRow hover={!!child && child.props.mdxType === 'td'} {...props} />
+    },
+    td: ({ align, ...props }: any) => <TableCell align={align || undefined} {...props} />,
+    tbody: (props: any) => <TableBody {...props} />,
+    th: ({ align, ...props }: any) => <TableCell align={align || undefined} {...props} />,
+	thead: (props: any) => <TableHead {...props} />,
+	hr: Divider,
+}
 
 ReactDOM.render(
 	<React.StrictMode>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
-			<App />
-		</BrowserRouter>
+		<MDXProvider components={components}>
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
+				<App />
+			</BrowserRouter>
+		</MDXProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
