@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 import ScrollTop from './ScrollTop';
 import HideOnScroll from './HideOnScroll';
 import { useLocation } from 'react-router-dom';
-import Search from './Search';
+import Search from '../search/Search';
 
 const drawerWidth = 240;
 
