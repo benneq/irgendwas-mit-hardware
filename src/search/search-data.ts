@@ -1,9 +1,9 @@
 export const keywords = [
-    'usb',
-    'hdd', 'festplatte', 'pmr', 'cmr', 'lmr', 'smr',
-    'ram', 'arbeitsspeicher',
-    'latency', 'latenz',
-    'wifi', 'wlan',
-    'pcie',
-    'network', 'netzwerk'
+    'USB',
+    'HDD', 'Festplatte', 'PMR', 'CMR', 'LMR', 'SMR',
+    'RAM', 'Arbeitsspeicher',
+    'latency', 'Latenz',
+    'Wi-Fi', 'WLAN',
+    'PCIe',
+    'network', 'Netzwerk'
 ];

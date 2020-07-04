@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { Autocomplete, FilterOptionsState } from '@material-ui/lab';
 import { keywords } from './search-data';
 
+
+
 const useStyles = makeStyles(theme => ({
 	search: {
 		position: 'relative',
@@ -83,11 +85,11 @@ const Search: React.FunctionComponent = () => {
 	};
 
 	const filterOptions = (options: string[], state: FilterOptionsState<string>): string[] => {
-		const inputValue = state.inputValue;
+		const inputValue = state.inputValue.toLowerCase();
 		if(!inputValue) {
 			return [];
 		}
-		return options.filter(option => option.startsWith(state.inputValue));
+		return options.filter(option => option.toLowerCase().startsWith(state.inputValue));
 	};
 
 	return (
