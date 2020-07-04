@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconButton, TextField, makeStyles, fade, InputAdornment } from '@material-ui/core';
 import { Search as SearchIcon, ArrowUpward as ArrowUpwardIcon } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
 import { Autocomplete, FilterOptionsState } from '@material-ui/lab';
 import { keywords } from './search-data';
 
