@@ -1,14 +1,16 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { Toolbar, IconButton, Drawer, useMediaQuery, Popper, Paper } from '@material-ui/core';
+import { Toolbar, IconButton, Drawer, useMediaQuery, Popper, Paper, AppBar, ClickAwayListener } from '@material-ui/core';
 import { Search as SearchIcon, ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-import SearchSuggestions from './SearchSuggestions';
+import SearchSuggestions from '../search/SearchSuggestions';
 import SearchInput from './SearchInput';
 import { useHistory } from 'react-router-dom';
+import { filterKeywords } from '../search/search.util';
 
 const Search: React.FunctionComponent = () => {
 	const theme = useTheme();
 	const [searchTerm, setSearchTerm] = React.useState('');
+	const [suggestions, setSuggestions] = React.useState<string[]>([]);
 	const [open, setOpen] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 	const anchorEl = React.useRef<HTMLDivElement>(null);
@@ -24,6 +26,7 @@ const Search: React.FunctionComponent = () => {
 
 	const handleSearchTermChange = (val: string) => {
 		setSearchTerm(val);
+		setSuggestions(filterKeywords(val));
 	};
 
 	const handleSearchTermEnter = () => {
@@ -34,8 +37,9 @@ const Search: React.FunctionComponent = () => {
 		executeSearch(val);
 	};
 
-	const handleInheritClick = (val: string) => {
-		setSearchTerm(val);
+	const handleClickAway = () => {
+		setSearchTerm('');
+		setSuggestions([]);
 	};
 
 	const executeSearch = (val: string) => {
@@ -54,23 +58,28 @@ const Search: React.FunctionComponent = () => {
 				open={isMobile && open}
 				onClose={handleDrawerClose}
 			>
-				<Toolbar>
-					<IconButton
-						edge="start"
-						onClick={handleDrawerClose}
-					>
-						<ArrowBackIcon />
-					</IconButton>
-					<SearchInput value={searchTerm} onChange={handleSearchTermChange} onEnter={handleSearchTermEnter} />
-					<IconButton edge="end" onClick={handleSearchTermEnter}>
-						<SearchIcon />
-					</IconButton>
-				</Toolbar>
-				<SearchSuggestions
-					value={[]}
-					onSuggestionClick={handleSuggestionClick}
-					onInheritClick={handleInheritClick}
-				/>
+				<AppBar position="fixed" color="inherit" component="div">
+					<Toolbar>
+						<IconButton
+							edge="start"
+							onClick={handleDrawerClose}
+						>
+							<ArrowBackIcon />
+						</IconButton>
+						<SearchInput value={searchTerm} onChange={handleSearchTermChange} onEnter={handleSearchTermEnter} />
+						<IconButton edge="end" onClick={handleSearchTermEnter}>
+							<SearchIcon />
+						</IconButton>
+					</Toolbar>
+				</AppBar>
+				<div style={{ maxHeight: '40vh' }}>
+					<Toolbar />
+					<SearchSuggestions
+						value={suggestions}
+						onSuggestionClick={handleSuggestionClick}
+						onInheritClick={handleSearchTermChange}
+					/>
+				</div>
 			</Drawer>
 
 			<Popper
@@ -78,16 +87,21 @@ const Search: React.FunctionComponent = () => {
 				anchorEl={anchorEl.current}
 				style={{
 					width: anchorEl.current ? anchorEl.current.clientWidth : undefined,
-					zIndex: 9001
+					zIndex: theme.zIndex.modal
 				}}
 			>
-				<Paper>
-					<SearchSuggestions
-						value={[]}
-						onSuggestionClick={handleSuggestionClick}
-						onInheritClick={handleInheritClick}
-					/>
-				</Paper>
+				<ClickAwayListener onClickAway={handleClickAway}>
+					<Paper style={{
+						maxHeight: '40vh',
+						overflow: 'auto',
+					}}>
+						<SearchSuggestions
+							value={suggestions}
+							onSuggestionClick={handleSuggestionClick}
+							onInheritClick={handleSearchTermChange}
+						/>
+					</Paper>
+				</ClickAwayListener>
 			</Popper>
 
 			{isMobile
