@@ -5,8 +5,8 @@ import MemoryLatencyCalculator from './memory/MemoryLatencyCalculator';
 import Home from './home/Home';
 import NetworkCable from './network/NetworkCable';
 import USB from './usb/USB';
-import NetworkWiFiStandards from './network/wifi/NetworkWiFiStandards';
-import PCIeStandards from './pcie/PCIeStandards';
+import NetworkWiFi from './network/wifi/NetworkWiFi';
+import PCIe from './pcie/PCIe';
 import SearchResults from './search/SearchResults';
 import HDD from './hdd/HDD';
 
@@ -20,8 +20,8 @@ const App: React.FunctionComponent = () => {
 				<Route path="/usb" component={USB} />
 				<Route path="/memory" component={MemoryLatencyCalculator} />
 				<Route exact path="/network/cable" component={NetworkCable} />
-				<Route exact path="/network/wifi" component={NetworkWiFiStandards} />
-				<Route path="/pcie" component={PCIeStandards} />
+				<Route exact path="/network/wifi" component={NetworkWiFi} />
+				<Route path="/pcie" component={PCIe} />
 				<Route path="/hdd" component={HDD} />
 			</Switch>
 		</Layout>
