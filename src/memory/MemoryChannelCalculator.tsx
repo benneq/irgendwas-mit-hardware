@@ -44,6 +44,7 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
             assignments[idx] = [...assignments[idx], module || 0];
         }
         setAssignments(assignments);
+    // eslint-disable-next-line
     }, [modules]);
 
     return (
