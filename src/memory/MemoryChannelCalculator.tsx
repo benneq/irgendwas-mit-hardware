@@ -30,7 +30,7 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
 
     useEffect(() => {
         const assignments = new Array<number[]>(channels || 0).fill([]);
-        const sortedModules = [...modules].sort((a, b) => b - a);
+        const sortedModules = [...modules].filter(isFinite).sort((a, b) => b - a);
         for(const module of sortedModules) {
             const idx = assignments.map((assignment, i) => ({
                 index: i,
