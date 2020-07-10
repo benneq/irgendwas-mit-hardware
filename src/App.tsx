@@ -9,6 +9,7 @@ import PCIe from './pcie/PCIe';
 import SearchResults from './search/SearchResults';
 import HDD from './hdd/HDD';
 import Memory from './memory/Memory';
+import DisplayStandards from './graphics/DisplayStandards';
 
 const App: React.FunctionComponent = () => {
 	return (
@@ -21,6 +22,7 @@ const App: React.FunctionComponent = () => {
 				<Route path="/memory" component={Memory} />
 				<Route exact path="/network/cable" component={NetworkCable} />
 				<Route exact path="/network/wifi" component={NetworkWiFi} />
+				<Route path="/graphics/display-standards" component={DisplayStandards} />
 				<Route path="/pcie" component={PCIe} />
 				<Route path="/hdd" component={HDD} />
 			</Switch>
