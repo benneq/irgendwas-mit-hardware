@@ -11,7 +11,10 @@ const menu = [
 		{ text: 'Kabel', to: '/network/cable' },
 		{ text: 'WLAN / Wi-Fi', to: '/network/wifi' },
 	]},
-	{ text: 'Display Standards', to: '/graphics/display-standards' },
+	{ text: 'Grafik', children: [
+		{ text: 'Display Standards', to: '/graphics/display-standards' },
+		{ text: 'Display Schnitstellen', to: '/graphics/display-interfaces' }
+	]},
 	{ text: 'RAM', to: '/memory' },
 	{ text: 'USB', to: '/usb' },
 	{ text: 'PCIe', to: '/pcie' },
