@@ -1,31 +1,49 @@
 import React from 'react';
 import { TextField, TextFieldProps } from '@material-ui/core';
+import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
-type Props = Omit<TextFieldProps, 'value' | 'onChange'> & {
+type Props = Omit<TextFieldProps, 'type' | 'value' | 'InputProps'> & {
     value: number
-    onChange?: (e: React.ChangeEvent<{ value: unknown }>) => void
+    onValueChange?: (val?: number) => void
+    allowNegative?: boolean
+    decimalScale?: number
+    InputProps?: Omit<TextFieldProps["InputProps"], 'inputComponent'>
 }
 
+const NumberFormatCustom = React.memo((props: any) => {
+    const { inputRef, onValueChange, ...other } = props;
+
+    return (
+        <NumberFormat
+            {...other}
+            getInputRef={inputRef}
+            onValueChange={onValueChange}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
+        />
+    );
+});
+
 const NumberField: React.FunctionComponent<Props> = (props) => {
-    const { value, onChange } = props;
+    const { onValueChange, inputProps, InputProps, allowNegative, decimalScale, ...rest } = props;
 
-    const textFieldValue = isFinite(value) ? value.toString() : '';
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange({
-            ...e,
-            target: {
-                ...e.target,
-                value: parseFloat(e.target.value)
-            }
-        })
+    const handleValueChange = (values: NumberFormatValues) => {
+        onValueChange && onValueChange(values.floatValue);
     };
 
     return (
         <TextField
-            {...props}
-            value={textFieldValue}
-            onChange={handleChange}
+            inputProps={{
+                ...inputProps,
+                onValueChange: handleValueChange,
+                allowNegative: allowNegative,
+                decimalScale: decimalScale
+            }}
+            InputProps={{
+                ...InputProps,
+                inputComponent: NumberFormatCustom
+            }}
+            {...rest}
         />
     );
 };

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
-import NumberField from '../util/NumberField';
 import ArrayJoin from '../util/ArrayJoin';
+import PositiveIntegerField from '../util/PositiveIntegerField';
+import NumberField from '../util/NumberField';
 
 const MemoryChannelCalculator: React.FunctionComponent = () => {
     const [channels, setChannels] = useState(2);
@@ -9,17 +10,17 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
     const [modules, setModules] = useState([8, 8, 4, 4]);
     const [assignments, setAssignments] = useState<number[][]>([]); 
 
-    const handleChannelsChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setChannels(e.target.value as number);
+    const handleChannelsChange = (val?: number) => {
+        setChannels(val || NaN);
     };
 
-    const handleSlotsPerChannelChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setSlotsPerChannel(e.target.value as number);
+    const handleSlotsPerChannelChange = (val?: number) => {
+        setSlotsPerChannel(val || NaN);
     };
 
-    const handleModuleChange = (idx: number) => (e: React.ChangeEvent<{ value: unknown }>) => {
+    const handleModuleChange = (idx: number) => (val?: number) => {
         const arr = modules.slice();
-        arr[idx] = e.target.value as number;
+        arr[idx] = val || NaN;
         setModules(arr);
     };
 
@@ -51,19 +52,19 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
         <>
             <Grid container spacing={2}>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         label="Channels"
                         helperText="Anzahl"
                         value={channels}
-                        onChange={handleChannelsChange}
+                        onValueChange={handleChannelsChange}
                     />
                 </Grid>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         label="Slots pro Channel"
                         helperText="Anzahl"
                         value={slotsPerChannel}
-                        onChange={handleSlotsPerChannelChange}
+                        onValueChange={handleSlotsPerChannelChange}
                     />
                 </Grid>
             </Grid>
@@ -74,7 +75,8 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
                             label={`Modul ${i+1} Kapazität`}
                             helperText="In GB"
                             value={module}
-                            onChange={handleModuleChange(i)}
+                            onValueChange={handleModuleChange(i)}
+                            allowNegative={false}
                         />
                     </Grid>
                 )}

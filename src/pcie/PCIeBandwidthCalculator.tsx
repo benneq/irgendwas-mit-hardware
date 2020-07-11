@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import NumberField from '../util/NumberField';
+import PositiveIntegerField from '../util/PositiveIntegerField';
 
 const PCIeBandwidthCalculator: React.FunctionComponent = () => {
     const [value, setValue] = useState({ transferRate: 8, lineCodeWords: 128, lineCodeSymbols: 130, lanes: 16 });
@@ -8,20 +9,20 @@ const PCIeBandwidthCalculator: React.FunctionComponent = () => {
 
     const bandwidth = transferRate * (lineCodeWords / lineCodeSymbols) * lanes / 8 * 1000;
 
-    const handleTransferRateChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, transferRate: e.target.value as number}));
+    const handleTransferRateChange = (val?: number) => {
+        setValue(value => ({ ...value, transferRate: val || NaN }));
     };
 
-    const handleLineCodeWordsChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, lineCodeWords: e.target.value as number}));
+    const handleLineCodeWordsChange = (val?: number) => {
+        setValue(value => ({ ...value, lineCodeWords: val || NaN }));
     };
 
-    const handleLineCodeSymbolsChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, lineCodeSymbols: e.target.value as number}));
+    const handleLineCodeSymbolsChange = (val?: number) => {
+        setValue(value => ({ ...value, lineCodeSymbols: val || NaN }));
     };
 
-    const handleLanesChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, lanes: e.target.value as number}));
+    const handleLanesChange = (val?: number) => {
+        setValue(value => ({ ...value, lanes: val || NaN }));
     };
 
     return (
@@ -31,31 +32,32 @@ const PCIeBandwidthCalculator: React.FunctionComponent = () => {
                     label="Übertragungsrate"
                     helperText="In GT/s"
                     value={transferRate}
-                    onChange={handleTransferRateChange}
+                    onValueChange={handleTransferRateChange}
+                    allowNegative={false}
                 />
             </Grid>
             <Grid item>
-                <NumberField
+                <PositiveIntegerField
                     label="Leitungscode Datenbits"
                     helperText="In bit"
                     value={lineCodeWords}
-                    onChange={handleLineCodeWordsChange}
+                    onValueChange={handleLineCodeWordsChange}
                 />
             </Grid>
             <Grid item>
-                <NumberField
+                <PositiveIntegerField
                     label="Leitungscode Codebits"
                     helperText="In bit"
                     value={lineCodeSymbols}
-                    onChange={handleLineCodeSymbolsChange}
+                    onValueChange={handleLineCodeSymbolsChange}
                 />
             </Grid>
             <Grid item>
-                <NumberField
+                <PositiveIntegerField
                     label="Lanes"
                     helperText="Anzahl"
                     value={lanes}
-                    onChange={handleLanesChange}
+                    onValueChange={handleLanesChange}
                 />
             </Grid>
             <Grid item>

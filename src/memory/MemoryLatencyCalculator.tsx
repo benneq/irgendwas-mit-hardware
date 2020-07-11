@@ -17,15 +17,15 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
     const latency = calculateLatency(timing, clockCyclesPerNs);
 
     const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, type: e.target.value as MemoryType}));
+        setValue(value => ({ ...value, type: e.target.value as MemoryType }));
     };
 
-    const handleFrequencyChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, frequency: e.target.value as number}));
+    const handleFrequencyChange = (val?: number) => {
+        setValue(value => ({ ...value, frequency: val || NaN }));
     };
 
-    const handleTimingChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setValue(val => ({...val, timing: e.target.value as number}));
+    const handleTimingChange = (val?: number) => {
+        setValue(value => ({ ...value, timing: val || NaN }));
     };
 
     const handlePresetChange = (val: MemoryLatencyPreset) => {
@@ -47,7 +47,8 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                     label="Speichertakt"
                     helperText="In MHz"
                     value={frequency}
-                    onChange={handleFrequencyChange}
+                    onValueChange={handleFrequencyChange}
+                    allowNegative={false}
                 />
             </Grid>
             <Grid item>
@@ -56,6 +57,7 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                     helperText="In ns"
                     disabled
                     value={clockCycleTime}
+                    allowNegative={false}
                 />
             </Grid>
             <Grid item>
@@ -71,7 +73,8 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                     label="Timing"
                     helperText="Taktzyklen"
                     value={timing}
-                    onChange={handleTimingChange}
+                    onValueChange={handleTimingChange}
+                    allowNegative={false}
                 />
             </Grid>
             <Grid item>

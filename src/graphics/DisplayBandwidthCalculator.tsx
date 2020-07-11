@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
-import NumberField from '../util/NumberField';
+import NumberFormatter from '../util/NumberFormatter';
+import PositiveIntegerField from '../util/PositiveIntegerField';
+
 
 const DisplayBandwidthCalculator: React.FunctionComponent = () => {
     const [horizontalResolution, setHorizontalResolution] = useState(1920);
@@ -9,20 +11,20 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
     const [colorDepth, setColorDepth] = useState(8);
     const [bandwidth, setBandwidth] = useState(0);
 
-    const handleHorizontalResolutionChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setHorizontalResolution(e.target.value as number);
+    const handleHorizontalResolutionChange = (val?: number) => {
+        setHorizontalResolution(val || NaN);
     };
 
-    const handleVerticalResolutionChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setVerticalResolution(e.target.value as number);
+    const handleVerticalResolutionChange = (val?: number) => {
+        setVerticalResolution(val || NaN);
     };
 
-    const handleRefreshRateChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setRefreshRate(e.target.value as number);
+    const handleRefreshRateChange = (val?: number) => {
+        setRefreshRate(val || NaN);
     };
 
-    const handleColorDepthChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        setColorDepth(e.target.value as number);
+    const handleColorDepthChange = (val?: number) => {
+        setColorDepth(val || NaN);
     };
 
     useEffect(() => {
@@ -34,40 +36,40 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
         <>
             <Grid container spacing={2}>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         value={horizontalResolution}
-                        onChange={handleHorizontalResolutionChange}
+                        onValueChange={handleHorizontalResolutionChange}
                         label="Horizontale Auflösung"
                         helperText="in Pixel"
                     />
                 </Grid>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         value={verticalResolution}
-                        onChange={handleVerticalResolutionChange}
+                        onValueChange={handleVerticalResolutionChange}
                         label="Vertikale Auflösung"
                         helperText="in Pixel"
                     />
                 </Grid>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         value={refreshRate}
-                        onChange={handleRefreshRateChange}
+                        onValueChange={handleRefreshRateChange}
                         label="Bildwiederholrate"
                         helperText="in Hz"
                     />
                 </Grid>
                 <Grid item>
-                    <NumberField
+                    <PositiveIntegerField
                         value={colorDepth}
-                        onChange={handleColorDepthChange}
+                        onValueChange={handleColorDepthChange}
                         label="Farbtiefe"
                         helperText="in bit"
                     />
                 </Grid>
             </Grid>
             <Grid container spacing={2}>
-                Benötigte Bandbreite: {bandwidth} bit/s = {bandwidth / 1000000000} Gbit/s
+                Benötigte Bandbreite: <NumberFormatter value={bandwidth} /> bit/s = <NumberFormatter value={bandwidth / 1000000000} /> Gbit/s
             </Grid>
         </>
     );
