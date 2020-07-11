@@ -6,21 +6,29 @@ type Props<T> = Omit<TextFieldProps, 'value' | 'onChange' | 'select'> & {
     options: T[]
     renderOption?: (value: T) => React.ReactNode
     onChange?: (e: React.ChangeEvent<{ value: unknown }>) => void
+    onValueChange?: (val: T) => void
+    valueComparator?: (a: T, b: T) => boolean
 }
 
 const SelectField: <T>(props: Props<T>) => React.ReactElement<Props<T>> = (props) => {
-    const { value, options, renderOption, onChange, children, ...rest } = props;
+    const { value, options, renderOption, onChange, onValueChange, valueComparator, children, ...rest } = props;
 
-    const selectedIdx = options.indexOf(value);
+    const selectedIdx = valueComparator
+        ? options.findIndex(option => valueComparator(option, value))
+        : options.indexOf(value);
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        const value = options[e.target.value as number];
+
         onChange && onChange({
             ...e,
             target: {
                 ...e.target,
-                value: options[e.target.value as number]
+                value: value
             }
-        })
+        });
+
+        onValueChange && onValueChange(value);
     };
 
     return (
