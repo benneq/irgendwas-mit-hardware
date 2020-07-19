@@ -2,7 +2,7 @@ import React from 'react';
 import { IconButton, TextField, makeStyles, fade, InputAdornment } from '@material-ui/core';
 import { Search as SearchIcon, ArrowUpward as ArrowUpwardIcon } from '@material-ui/icons';
 import { Autocomplete, FilterOptionsState } from '@material-ui/lab';
-import { keywords } from './search-data';
+import { KEYWORDS } from './search-data';
 
 
 
@@ -97,7 +97,7 @@ const SearchAutocomplete: React.FunctionComponent<Props> = (props) => {
 			inputValue={value}
 			onInputChange={handleInputValueChange}
 			onChange={handleChange}
-			options={keywords}
+			options={KEYWORDS}
 			clearOnEscape
 			freeSolo
 			filterOptions={filterOptions}
