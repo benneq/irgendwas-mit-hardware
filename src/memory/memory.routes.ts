@@ -1,3 +1,3 @@
 export const MEMORY_ROUTES = {
-    index: '/memory',
+    index: { path: '/memory', title: 'RAM' },
 }

@@ -1,3 +1,3 @@
 export const USB_ROUTES = {
-    index: '/usb',
+    index: { path: '/usb', title: 'USB' },
 }

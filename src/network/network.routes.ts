@@ -1,5 +1,5 @@
 export const NETWORK_ROUTES = {
-    index: '/network',
-    cable: '/network/cable',
-    wifi: '/network/wifi',
+    index: { path: '/network', title: 'Netzwerk' },
+    cable: { path: '/network/cable', title: 'Kabel' },
+    wifi: { path: '/network/wifi', title: 'WLAN / Wi-Fi' },
 }

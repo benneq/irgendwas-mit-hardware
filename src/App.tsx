@@ -17,22 +17,24 @@ import { PCIE_ROUTES } from './pcie/pcie.routes';
 import { HDD_ROUTES } from './hdd/hdd.routes';
 import { MEMORY_ROUTES } from './memory/memory.routes';
 import { USB_ROUTES } from './usb/usb.routes';
+import { HOME_ROUTES } from './home/home.routes';
+import { SEARCH_ROUTES } from './search/search.routes';
 
 const App: React.FunctionComponent = () => {
 	return (
 		<Layout>
 			<Switch>
-				<Redirect exact from="/" to="/home" />
-				<Route path="/home" component={Home} />
-				<Route path="/search" component={SearchResults} />
-				<Route path={USB_ROUTES.index} component={USB} />
-				<Route path={MEMORY_ROUTES.index} component={Memory} />
-				<Route path={NETWORK_ROUTES.cable} component={NetworkCable} />
-				<Route path={NETWORK_ROUTES.wifi} component={NetworkWiFi} />
-				<Route path={GRAPHICS_ROUTES.displayStandards} component={DisplayStandards} />
-				<Route path={GRAPHICS_ROUTES.displayInterfaces} component={DisplayInterfaces} />
-				<Route path={PCIE_ROUTES.index} component={PCIe} />
-				<Route path={HDD_ROUTES.index} component={HDD} />
+				<Redirect exact from="/" to={HOME_ROUTES.index.path} />
+				<Route path={HOME_ROUTES.index.path} component={Home} />
+				<Route path={SEARCH_ROUTES.results.path} component={SearchResults} />
+				<Route path={USB_ROUTES.index.path} component={USB} />
+				<Route path={MEMORY_ROUTES.index.path} component={Memory} />
+				<Route path={NETWORK_ROUTES.cable.path} component={NetworkCable} />
+				<Route path={NETWORK_ROUTES.wifi.path} component={NetworkWiFi} />
+				<Route path={GRAPHICS_ROUTES.displayStandards.path} component={DisplayStandards} />
+				<Route path={GRAPHICS_ROUTES.displayInterfaces.path} component={DisplayInterfaces} />
+				<Route path={PCIE_ROUTES.index.path} component={PCIe} />
+				<Route path={HDD_ROUTES.index.path} component={HDD} />
 			</Switch>
 		</Layout>
 	);

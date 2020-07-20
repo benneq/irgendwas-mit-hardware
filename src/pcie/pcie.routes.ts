@@ -1,3 +1,3 @@
 export const PCIE_ROUTES = {
-    index: '/pcie',
+    index: { path: '/pcie', title: 'PCIe' },
 }

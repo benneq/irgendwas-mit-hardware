@@ -1,3 +1,3 @@
 export const HDD_ROUTES = {
-    index: '/hdd',
+    index: { path: '/hdd', title: 'HDD' }
 }

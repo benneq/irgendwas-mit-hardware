@@ -1,5 +1,5 @@
 export const GRAPHICS_ROUTES = {
-    index: '/graphics',
-    displayStandards: '/graphics/display-standards',
-    displayInterfaces: '/graphics/display-interfaces',
+    index: { path: '/graphics', title: 'Grafik' },
+    displayStandards: { path: '/graphics/display-standards', title: 'Display Standards' },
+    displayInterfaces: { path: '/graphics/display-interfaces', title: 'Display Schnittstellen' },
 }
