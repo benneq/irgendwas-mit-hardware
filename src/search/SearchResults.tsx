@@ -4,6 +4,7 @@ import { tokenizeQuery, filterIndex, sortResults } from './search.util';
 import { REVERSED_INDEX } from './search-data';
 import { List, Typography } from '@material-ui/core';
 import SearchResultItem from './SearchResultItem';
+import { ROUTES } from '../layout/routes-data';
 
 
 const SearchResults: React.FunctionComponent = () => {
@@ -22,7 +23,7 @@ const SearchResults: React.FunctionComponent = () => {
 
             <List>
                 {sortedResults.map((result, i) => 
-                    <SearchResultItem key={i} title={result.url} url={result.url} tokens={result.tokens} />
+                    <SearchResultItem key={i} title={ROUTES[result.url].title} url={result.url} tokens={result.tokens} />
                 )}
             </List>
         </div>
