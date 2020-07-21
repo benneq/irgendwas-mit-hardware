@@ -1,8 +1,9 @@
 import React from 'react';
-import { useLocation, NavLink, NavLinkProps } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { tokenizeQuery, filterIndex, sortResults } from './search.util';
 import { REVERSED_INDEX } from './search-data';
-import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { List, Typography } from '@material-ui/core';
+import SearchResultItem from './SearchResultItem';
 
 
 const SearchResults: React.FunctionComponent = () => {
@@ -21,7 +22,7 @@ const SearchResults: React.FunctionComponent = () => {
 
             <List>
                 {sortedResults.map((result, i) => 
-                    <SearchResultItem key={i} url={result.url} tokens={result.tokens} />
+                    <SearchResultItem key={i} title={result.url} url={result.url} tokens={result.tokens} />
                 )}
             </List>
         </div>
@@ -29,17 +30,3 @@ const SearchResults: React.FunctionComponent = () => {
 };
 
 export default SearchResults;
-
-
-
-const SearchResultItem: React.FunctionComponent<{ url: string, tokens: string[] }> = (props) => {
-    const { url, tokens } = props;
-
-    const MyNavLink = React.forwardRef<HTMLAnchorElement>((navLinkProps: Omit<NavLinkProps, 'to'>, ref) => <NavLink to={url} {...navLinkProps} ref={ref} />);
-
-    return (
-        <ListItem button component={MyNavLink}>
-            <ListItemText primary={url} secondary={`Treffer: ${tokens.join(', ')}`} />
-        </ListItem>
-    );
-}
