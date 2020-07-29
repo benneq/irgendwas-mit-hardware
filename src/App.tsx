@@ -11,6 +11,7 @@ import HDD from './hdd/HDD';
 import Memory from './memory/Memory';
 import DisplayStandards from './graphics/DisplayStandards';
 import DisplayInterfaces from './graphics/DisplayInterfaces';
+import Fan from './fan/Fan';
 import { NETWORK_ROUTES } from './network/network.routes';
 import { GRAPHICS_ROUTES } from './graphics/graphics.routes';
 import { PCIE_ROUTES } from './pcie/pcie.routes';
@@ -19,6 +20,9 @@ import { MEMORY_ROUTES } from './memory/memory.routes';
 import { USB_ROUTES } from './usb/usb.routes';
 import { HOME_ROUTES } from './home/home.routes';
 import { SEARCH_ROUTES } from './search/search.routes';
+import { FAN_ROUTES } from './fan/fan.routes';
+
+
 
 const App: React.FunctionComponent = () => {
 	return (
@@ -35,6 +39,7 @@ const App: React.FunctionComponent = () => {
 				<Route path={GRAPHICS_ROUTES.displayInterfaces.path} component={DisplayInterfaces} />
 				<Route path={PCIE_ROUTES.index.path} component={PCIe} />
 				<Route path={HDD_ROUTES.index.path} component={HDD} />
+				<Route path={FAN_ROUTES.index.path} component={Fan} />
 			</Switch>
 		</Layout>
 	);

@@ -1,0 +1,33 @@
+##### 2-Pin
+Masse (0V), Versorgungsspannung (+12V)
+
+###### Drehzahlregelung
+Je nach verwendetem Lüfter ist die Regelung der Drehzahl in einem bestimmten Bereich möglich. Nähere Infos dazu sind dem Datenblatt des jeweiligen Modells zu entnehmen. Erst wenn die Spannung für die Mindestdrehzahl (Anlaufspannung) ausreicht, beginnt sich der Lüfter zu drehen.
+
+Die Drehzahl kann über die anliegende Spannung verändert werden, welche der Differenz zwischen Masse und der Versorgungsspannung entspricht. Es ist also beispielsweise möglich -5V und +5V an Masse und Versorgungsspannung zu legen, um den Lüfter mit effektiv 10V zu betreiben.
+
+
+
+##### 3-Pin (Tacho)
+Masse (0V), Versorgungsspannung (+12V), Tachosignal
+
+Der einzige Unterschied zu 2-Pin-Lüftern ist der Rückkanal über das Tachosignal zur Übertragung der aktuellen Drehzahl.
+
+
+
+##### 4-Pin (Tacho und PWM)
+Masse (0V), Versorgungsspannung (+12V), Tachosignal, PWM-Signal (Duty Cycle)
+
+Im Vergleich zu 2- und 3-Pin-Lüftern liegt bei PWM-Lüftern eine konstante Versorgungsspannung an. Die Drehzahl wird über das PWM-Signal geregelt.
+
+###### Drehzahlregelung
+Das PWM-Signal wird üblicherweise in Prozent angegeben und signalisiert dem Lüfter wie schnell er drehen soll. Da allerdings die eigentliche Steuerungselektronik im Lüfter selbst verbaut ist, ist es vom Hersteller abhängig wie dieses Signal genau interpretiert wird.
+Grundsätzlich werden 3 Arten der PWM-Regelung unterschieden:
+
+- **Type A:** Der Lüfter dreht immer mindestens mit einer bestimmten Drehzahl.
+
+- **Type B:** Der Lüfter stoppt bei einem PWM-Signal von exakt 0%. Oberhalb dieses Werts verhält er sich wie Type A.
+
+- **Type C:** Die Drehzahl skaliert linear mit dem PWM-Signal, vergleichbar mit der Änderung der Versorgungsspannung bei 2- und 3-Pin-Lüftern. Das hat zur Folge, dass der Lüfter erst zu drehen anfängt, wenn das PWM-Signal der Mindestdrehzahl entspricht.
+
+Je nach verwendeter Lüftersteuerung bzw. Mainboard kann es zusätzlich noch die Möglichkeit geben, die Versorgungsspannung abzuschalten, um so einen Type-A-Lüfter zum Stillstand zu bringen.

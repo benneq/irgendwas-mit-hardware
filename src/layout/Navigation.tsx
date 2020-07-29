@@ -9,6 +9,7 @@ import { USB_ROUTES } from '../usb/usb.routes';
 import { PCIE_ROUTES } from '../pcie/pcie.routes';
 import { HDD_ROUTES } from '../hdd/hdd.routes';
 import { HOME_ROUTES } from '../home/home.routes';
+import { FAN_ROUTES } from '../fan/fan.routes';
 
 
 
@@ -26,6 +27,7 @@ const menu = [
 	{ text: 'USB', to: USB_ROUTES.index.path },
 	{ text: 'PCIe', to: PCIE_ROUTES.index.path },
 	{ text: 'HDD', to: HDD_ROUTES.index.path },
+	{ text: 'Lüfter', to: FAN_ROUTES.index.path },
 ];
 
 const useStyles = makeStyles(theme => ({
