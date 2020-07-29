@@ -5,8 +5,10 @@ import { NETWORK_SEARCH_INDEX } from '../network/network.search';
 import { PCIE_SEARCH_INDEX } from '../pcie/pcie.search';
 import { USB_SEARCH_INDEX } from '../usb/usb.search';
 import { GRAPHICS_SEARCH_INDEX } from '../graphics/graphics.search';
+import { FAN_SEARCH_INDEX } from '../fan/fan.search';
 
 export const SEARCH_INDEX = createIndex(
+    FAN_SEARCH_INDEX,
     GRAPHICS_SEARCH_INDEX,
     HDD_SEARCH_INDEX,
     MEMORY_SEARCH_INDEX,
