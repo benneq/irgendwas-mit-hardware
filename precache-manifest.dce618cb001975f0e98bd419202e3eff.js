@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ad76708be96b9b39c9b773640c6a98b4",
+    "revision": "736ae1978efb1eabc033495b15677b1f",
     "url": "/irgendwas-mit-hardware/index.html"
   },
   {
-    "revision": "a542420a7fc351e6c745",
+    "revision": "50132362472369bb8343",
     "url": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/irgendwas-mit-hardware/static/js/2.ae1d3999.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a542420a7fc351e6c745",
-    "url": "/irgendwas-mit-hardware/static/js/main.1d224ad6.chunk.js"
+    "revision": "50132362472369bb8343",
+    "url": "/irgendwas-mit-hardware/static/js/main.6f9af084.chunk.js"
   },
   {
     "revision": "562b5d22b332784487dd",
