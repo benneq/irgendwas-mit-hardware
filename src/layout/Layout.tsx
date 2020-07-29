@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 		width: drawerWidth,
 	},
 	content: {
+		marginBottom: theme.spacing(4),
 		flexGrow: 1,
 		padding: theme.spacing(1),
 		[theme.breakpoints.up('sm')]: {
