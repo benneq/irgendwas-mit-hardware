@@ -5,7 +5,8 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { MDXProvider } from '@mdx-js/react';
-import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider } from '@material-ui/core';
+import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider } from '@material-ui/core';
+import theme from './theme';
 
 const components = {
     h1: (props: any) => <Typography variant="h1" {...props} />,
@@ -28,11 +29,13 @@ const components = {
 
 ReactDOM.render(
 	<React.StrictMode>
-		<MDXProvider components={components}>
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
-				<App />
-			</BrowserRouter>
-		</MDXProvider>
+        <ThemeProvider theme={theme}>
+            <MDXProvider components={components}>
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
+                    <App />
+                </BrowserRouter>
+            </MDXProvider>
+        </ThemeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

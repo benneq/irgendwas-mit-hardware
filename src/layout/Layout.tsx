@@ -13,6 +13,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
+		// ...theme.typography.body1,
 	},
 	drawer: {
 		[theme.breakpoints.up('sm')]: {
@@ -41,7 +42,11 @@ const useStyles = makeStyles(theme => ({
 		width: drawerWidth,
 	},
 	content: {
+		marginLeft: 'auto',
+		marginRight: 'auto',
 		marginBottom: theme.spacing(4),
+		boxSizing: 'content-box',
+		maxWidth: '100ch',
 		flexGrow: 1,
 		padding: theme.spacing(1),
 		[theme.breakpoints.up('sm')]: {
