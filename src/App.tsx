@@ -11,6 +11,7 @@ import HDD from './hdd/HDD';
 import Memory from './memory/Memory';
 import DisplayStandards from './graphics/DisplayStandards';
 import DisplayInterfaces from './graphics/DisplayInterfaces';
+import DisplaySynchronization from './graphics/DisplaySynchronization';
 import Fan from './fan/Fan';
 import { NETWORK_ROUTES } from './network/network.routes';
 import { GRAPHICS_ROUTES } from './graphics/graphics.routes';
@@ -37,6 +38,7 @@ const App: React.FunctionComponent = () => {
 				<Route path={NETWORK_ROUTES.wifi.path} component={NetworkWiFi} />
 				<Route path={GRAPHICS_ROUTES.displayStandards.path} component={DisplayStandards} />
 				<Route path={GRAPHICS_ROUTES.displayInterfaces.path} component={DisplayInterfaces} />
+				<Route path={GRAPHICS_ROUTES.displaySynchronization.path} component={DisplaySynchronization} />
 				<Route path={PCIE_ROUTES.index.path} component={PCIe} />
 				<Route path={HDD_ROUTES.index.path} component={HDD} />
 				<Route path={FAN_ROUTES.index.path} component={Fan} />

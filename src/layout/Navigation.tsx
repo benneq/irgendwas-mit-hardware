@@ -21,7 +21,8 @@ const menu = [
 	]},
 	{ text: 'Grafik', children: [
 		{ text: 'Display Standards', to: GRAPHICS_ROUTES.displayStandards.path },
-		{ text: 'Display Schnitstellen', to: GRAPHICS_ROUTES.displayInterfaces.path }
+		{ text: 'Display Schnitstellen', to: GRAPHICS_ROUTES.displayInterfaces.path },
+		{ text: 'Display Synchronisierung', to: GRAPHICS_ROUTES.displaySynchronization.path },
 	]},
 	{ text: 'RAM', to: MEMORY_ROUTES.index.path },
 	{ text: 'USB', to: USB_ROUTES.index.path },

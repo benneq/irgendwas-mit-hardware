@@ -1,0 +1,52 @@
+#### Double Buffering
+
+Beim Double Buffering werden zwei getrennte Speicherbereiche für jeweils das Rendering (back buffer) und die Bildübertragung zum Monitor (front buffer) genutzt. Nachdem ein Frame fertig gerendert wurde werden die Buffer vertauscht (buffer swap).
+
+In dieser Form des Double Bufferings kann der buffer swap mitten in der Übertragung eines Bildes zum Monitor stattfinden. So kann es passieren, dass der obere, bereits übertragene Teil zum alten Frame gehört und der untere Teil zum neuen Frame. Die Folge ist das sogenannte Tearing.
+
+
+
+#### VSync (mit Double Buffering)
+
+Um Tearing zu vermeiden, wird bei der Verwendung von VSync der Buffertausch zusätzlich so lange verzögert bis der Inhalt des front buffers vollständig zum Monitor übertragen wurde. D.h. die Buffer werden erst getauscht wenn sowohl die Grafikkarte den Frame fertig gerendert hat, als auch der Monitor bereit für das nächste Bild ist. Dadurch wird die maximale Framerate auf die Wiederholfrequnz des Monitors limitiert.
+
+Es entsteht eine zusätzliche Verzögerung bei der Bildübertragung, weil das frisch gerenderte Bild nicht sofort dargestellt werden kann, sondern auf den Monitor warten muss. Man erhält ein größeres input lag.
+
+Außerdem kann die Framerate halbiert werden, wenn das Rendering des nächsten Frames nur minimal länger dauert als das Synchronisationsintervall, weil dann bereits wieder die Bildübertragung zum Monitor angestoßen und abgewartet werden muss.
+
+
+
+#### Triple Buffering (mit VSync)
+
+Beim Triple Buffering wird ein weiterer back buffer verwendet, um die Vorteile von Double Buffering und VSync zu vereinen. Dadurch kann die Grafikkarte so viele Frames rendern wie sie kann, während gleichzeitig immer das aktuellste fertige Bild für die Übertragung zum Monitor bereitsteht.
+
+Man erhält also ein vergleichbar niedriges input lag wie beim Double Buffering ohne VSync und gleichzeitig kein Tearing.
+
+(Die Framerate kann von externen Tools nicht korrekt ausgelesen werden, da diese nur den front buffer swap zählen, welcher weiterhin synchron mit der Wiederholfrequnz des Monitors stattfindet)
+
+(In manchen Spielen und Grafikbibliotheken wird Render Ahead als Triple Buffering bezeichnet, was grundlegend falsch ist und zum schlechten Image von echtem Triple Buffering beiträgt)
+
+
+
+#### Quad Buffering
+
+Diese Technik wird bei stereoskopischen Ausgaben benutzt, und verwendet Double Buffering für jedes Auge.
+
+
+
+#### Render Ahead (flip queue)
+
+Beim Render Ahead werden Frames in einer Warteschlange (render ahead queue) vorberechnet und dann erzwungen hintereinander dargestellt. Das kann zu einer gleichmäßigeren Framerate führen, indem Performancelöcher mit den Frames aus der Warteschlange aufgefüllt werden. Aber je nach Länge der Warteschlange, erhält man dafür ein stark erhöhtes input lag.
+
+Manche Entwickler benutzen Render Ahead mit insgesamt drei Buffern und bezeichnen es fälschlicherweise als Triple Buffering. Diese Technik verhält sich allerdings nur wie Triple Buffering solange die Framerate unterhalb der Wiederholfrequnz liegt. Sobald die Framerate darüber liegt erhält man ein erhöhtes input lag.
+
+
+
+#### Fast Sync / Enhanced Sync
+
+TBD
+
+
+#### G-Sync / FreeSync / Adaptive-Sync / VRR
+
+TBD
