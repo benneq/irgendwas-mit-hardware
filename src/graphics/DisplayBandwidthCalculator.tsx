@@ -4,6 +4,7 @@ import NumberFormatter from '../util/NumberFormatter';
 import PositiveIntegerField from '../util/PositiveIntegerField';
 import SelectField from '../util/SelectField';
 import { isEqual } from 'lodash-es';
+import NumberField from '../util/NumberField';
 
 
 const presets = [
@@ -41,6 +42,8 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
         const bandwidth = value.h * value.v * value.r * 3 * value.c;
         setBandwidth(bandwidth);
     }, [value]);
+
+    const refreshWindow = 1000 / value.r;
 
     return (
         <>
@@ -81,6 +84,14 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
                         onValueChange={handleRefreshRateChange}
                         label="Bildwiederholrate"
                         helperText="in Hz"
+                    />
+                </Grid>
+                <Grid item>
+                    <NumberField
+                        label="Max. Reaktionszeit"
+                        helperText="In ms"
+                        disabled
+                        value={refreshWindow}
                     />
                 </Grid>
                 <Grid item>
