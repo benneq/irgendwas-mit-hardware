@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "61a38e441523268a4aa25e3da7b5c451",
+    "revision": "4277402253ae2b3aa9fea26d94eb7a69",
     "url": "/irgendwas-mit-hardware/index.html"
   },
   {
-    "revision": "98540f2b2eff318c8b90",
+    "revision": "39edff4c661fcae540cf",
     "url": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css"
   },
   {
@@ -16,20 +16,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "98540f2b2eff318c8b90",
-    "url": "/irgendwas-mit-hardware/static/js/main.f27c0659.chunk.js"
+    "revision": "39edff4c661fcae540cf",
+    "url": "/irgendwas-mit-hardware/static/js/main.c9deb6b7.chunk.js"
   },
   {
     "revision": "562b5d22b332784487dd",
     "url": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js"
   },
   {
-    "revision": "8c7bb5919adef083b67d2cfbc14e05e3",
-    "url": "/irgendwas-mit-hardware/static/media/doublebuffering.8c7bb591.svg"
+    "revision": "e2a7d841b60efd1509d9ff7134c64936",
+    "url": "/irgendwas-mit-hardware/static/media/doublebuffering.e2a7d841.svg"
   },
   {
-    "revision": "442c70f2d52f05b410cd68f5cb228f03",
-    "url": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.442c70f2.svg"
+    "revision": "9da84af2092b31f515fb5b00b68687ef",
+    "url": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.9da84af2.svg"
   },
   {
     "revision": "591e2b3c459eb2f11efd96a64727e477",

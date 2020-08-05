@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css",
-    "main.js": "/irgendwas-mit-hardware/static/js/main.f27c0659.chunk.js",
-    "main.js.map": "/irgendwas-mit-hardware/static/js/main.f27c0659.chunk.js.map",
+    "main.js": "/irgendwas-mit-hardware/static/js/main.c9deb6b7.chunk.js",
+    "main.js.map": "/irgendwas-mit-hardware/static/js/main.c9deb6b7.chunk.js.map",
     "runtime-main.js": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js",
     "runtime-main.js.map": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js.map",
     "static/js/2.26ae990d.chunk.js": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js",
     "static/js/2.26ae990d.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js.map",
     "index.html": "/irgendwas-mit-hardware/index.html",
-    "precache-manifest.a679482f38917e903fc614c56767933d.js": "/irgendwas-mit-hardware/precache-manifest.a679482f38917e903fc614c56767933d.js",
+    "precache-manifest.cf349b261308e8ed33208ce722594c93.js": "/irgendwas-mit-hardware/precache-manifest.cf349b261308e8ed33208ce722594c93.js",
     "service-worker.js": "/irgendwas-mit-hardware/service-worker.js",
     "static/css/main.72d5f6dc.chunk.css.map": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css.map",
     "static/js/2.26ae990d.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js.LICENSE.txt",
-    "static/media/doublebuffering.svg": "/irgendwas-mit-hardware/static/media/doublebuffering.8c7bb591.svg",
-    "static/media/doublebufferingvsync.svg": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.442c70f2.svg",
+    "static/media/doublebuffering.svg": "/irgendwas-mit-hardware/static/media/doublebuffering.e2a7d841.svg",
+    "static/media/doublebufferingvsync.svg": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.9da84af2.svg",
     "static/media/triplebufferingvsync.svg": "/irgendwas-mit-hardware/static/media/triplebufferingvsync.591e2b3c.svg",
     "static/media/vrr.svg": "/irgendwas-mit-hardware/static/media/vrr.45f3de70.svg"
   },
@@ -21,6 +21,6 @@
     "static/js/runtime-main.397ede97.js",
     "static/js/2.26ae990d.chunk.js",
     "static/css/main.72d5f6dc.chunk.css",
-    "static/js/main.f27c0659.chunk.js"
+    "static/js/main.c9deb6b7.chunk.js"
   ]
 }
