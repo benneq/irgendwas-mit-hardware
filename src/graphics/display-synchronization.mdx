@@ -1,6 +1,6 @@
-import DoubleBufferingImage from './DoubleBufferingImage';
-import DoubleBufferingVSyncImage from './DoubleBufferingVSyncImage';
-import TripleBufferingVSyncImage from './TripleBufferingVSyncImage';
+import DoubleBufferingImage from './doublebuffering.svg';
+import DoubleBufferingVSyncImage from './doublebufferingvsync.svg';
+import TripleBufferingVSyncImage from './triplebufferingvsync.svg';
 
 
 
@@ -9,13 +9,15 @@ import TripleBufferingVSyncImage from './TripleBufferingVSyncImage';
 Bei Monitoren mit Fixed Refresh Rate werden die einzelnen Frames in festen Intervallen dargestellt. Bei beispielsweise 60 Hz passiert das alle 16,67 ms.
 
 
+
 ##### Double Buffering
 
 Beim Double Buffering werden zwei getrennte Speicherbereiche für jeweils das Rendering (back buffer) und die Bildübertragung zum Monitor (front buffer) genutzt. Nachdem ein Frame fertig gerendert wurde werden die Buffer vertauscht (buffer swap).
 
 In dieser Form des Double Bufferings kann der buffer swap mitten in der Übertragung eines Bildes zum Monitor stattfinden. So kann es passieren, dass der obere, bereits übertragene Teil zum alten Frame gehört und der untere Teil zum neuen Frame. Die Folge ist das sogenannte Tearing. Bei entsprechend hohen Frameraten kann das Bild auf dem Monitor auch aus deutlich mehr als 2 Frameteilen bestehen.
 
-<DoubleBufferingImage />
+<img src={DoubleBufferingImage} style={{ maxWidth: "100%" }} />
+
 
 
 ##### VSync (mit Double Buffering)
@@ -26,7 +28,8 @@ Es entsteht eine zusätzliche Verzögerung bei der Bildübertragung, weil das fr
 
 Außerdem kann die Framerate halbiert werden, wenn das Rendering des nächsten Frames nur minimal länger dauert als das Synchronisationsintervall, weil dann bereits wieder die Bildübertragung zum Monitor angestoßen und abgewartet werden muss. Bei ungleichmäßigen Frameraten unterhalb der Wiederholfrequenz des Monitors kann sogenanntes Stuttering entstehen, indem die Frames in ungleichmäßigen Abständen teilweise mehrfach ausgegeben werden: Die Framerate auf dem Monitor springt dann zwischen der vollen und halben Wiederholfrequenz hin und her.
 
-<DoubleBufferingVSyncImage />
+<img src={DoubleBufferingVSyncImage} style={{ maxWidth: "100%" }} />
+
 
 
 ##### Triple Buffering (mit VSync)
@@ -39,7 +42,8 @@ Man erhält also ein vergleichbar niedriges input lag wie beim Double Buffering 
 
 (In manchen Spielen und Grafikbibliotheken wird Render Ahead als Triple Buffering bezeichnet, was grundlegend falsch ist und zum schlechten Image von echtem Triple Buffering beiträgt)
 
-<TripleBufferingVSyncImage />
+<img src={TripleBufferingVSyncImage} style={{ maxWidth: "100%" }} />
+
 
 
 ##### Quad Buffering
