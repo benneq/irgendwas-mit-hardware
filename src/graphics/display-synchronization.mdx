@@ -1,6 +1,7 @@
 import DoubleBufferingImage from './doublebuffering.svg';
 import DoubleBufferingVSyncImage from './doublebufferingvsync.svg';
 import TripleBufferingVSyncImage from './triplebufferingvsync.svg';
+import VRRImage from './vrr.svg';
 
 
 
@@ -16,7 +17,7 @@ Beim Double Buffering werden zwei getrennte Speicherbereiche für jeweils das Re
 
 In dieser Form des Double Bufferings kann der buffer swap mitten in der Übertragung eines Bildes zum Monitor stattfinden. So kann es passieren, dass der obere, bereits übertragene Teil zum alten Frame gehört und der untere Teil zum neuen Frame. Die Folge ist das sogenannte Tearing. Bei entsprechend hohen Frameraten kann das Bild auf dem Monitor auch aus deutlich mehr als 2 Frameteilen bestehen.
 
-<img src={DoubleBufferingImage} style={{ maxWidth: "100%" }} />
+<img src={DoubleBufferingImage} />
 
 
 
@@ -28,7 +29,7 @@ Es entsteht eine zusätzliche Verzögerung bei der Bildübertragung, weil das fr
 
 Außerdem kann die Framerate halbiert werden, wenn das Rendering des nächsten Frames nur minimal länger dauert als das Synchronisationsintervall, weil dann bereits wieder die Bildübertragung zum Monitor angestoßen und abgewartet werden muss. Bei ungleichmäßigen Frameraten unterhalb der Wiederholfrequenz des Monitors kann sogenanntes Stuttering entstehen, indem die Frames in ungleichmäßigen Abständen teilweise mehrfach ausgegeben werden: Die Framerate auf dem Monitor springt dann zwischen der vollen und halben Wiederholfrequenz hin und her.
 
-<img src={DoubleBufferingVSyncImage} style={{ maxWidth: "100%" }} />
+<img src={DoubleBufferingVSyncImage} />
 
 
 
@@ -42,7 +43,7 @@ Man erhält also ein vergleichbar niedriges input lag wie beim Double Buffering 
 
 (In manchen Spielen und Grafikbibliotheken wird Render Ahead als Triple Buffering bezeichnet, was grundlegend falsch ist und zum schlechten Image von echtem Triple Buffering beiträgt)
 
-<img src={TripleBufferingVSyncImage} style={{ maxWidth: "100%" }} />
+<img src={TripleBufferingVSyncImage} />
 
 
 
@@ -71,6 +72,8 @@ Diese Technolgien werden als moderne Alternativen zu VSync gehandelt. Dabei wird
 Bei Variable Refresh Rate Monitoren kann die Wiederholfrequenz kontinuierlich und stufenlos innerhalb eines bestimmten Bereichs (VRR range) angepasst werden. Dadurch können die fertig gerenderten Frames ohne Verzögerung zum Monitor übertragen werden, wodurch Tearing und Stuttering vermieden und das input lag auf ein Minimum reduziert wird. Das funktioniert aber nur solange die Framerate sich innerhalb der VRR range befindet. Außerhalb dieses Bereichs ist man wieder auf die Möglichkeiten von Fixed Refresh Rate Monitoren beschränkt.
 
 Außerdem wird diese Technologie in mobilen Geräten verwendet, um Energie zu sparen, indem die Wiederholfrequenz temporär gesenkt wird.
+
+<img src={VRRImage} />
 
 
 
