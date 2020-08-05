@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4277402253ae2b3aa9fea26d94eb7a69",
+    "revision": "2fb6fd5624a9c06c8db8ed49bc8bc7cb",
     "url": "/irgendwas-mit-hardware/index.html"
   },
   {
-    "revision": "39edff4c661fcae540cf",
+    "revision": "852efe0f6e69ec520350",
     "url": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css"
   },
   {
-    "revision": "896851f4ba77d65f0cd1",
-    "url": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js"
+    "revision": "d53d5c6c71ca1b65b70c",
+    "url": "/irgendwas-mit-hardware/static/js/2.14d4ef39.chunk.js"
   },
   {
     "revision": "89b0379e7bcda1a468d8b0343aeb4e53",
-    "url": "/irgendwas-mit-hardware/static/js/2.26ae990d.chunk.js.LICENSE.txt"
+    "url": "/irgendwas-mit-hardware/static/js/2.14d4ef39.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "39edff4c661fcae540cf",
-    "url": "/irgendwas-mit-hardware/static/js/main.c9deb6b7.chunk.js"
+    "revision": "852efe0f6e69ec520350",
+    "url": "/irgendwas-mit-hardware/static/js/main.3bdd61f6.chunk.js"
   },
   {
     "revision": "562b5d22b332784487dd",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9da84af2092b31f515fb5b00b68687ef",
     "url": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.9da84af2.svg"
+  },
+  {
+    "revision": "94d9177eadbc2f8af3de53533729c484",
+    "url": "/irgendwas-mit-hardware/static/media/renderahead.94d9177e.svg"
   },
   {
     "revision": "591e2b3c459eb2f11efd96a64727e477",
