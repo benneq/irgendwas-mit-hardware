@@ -1,27 +1,30 @@
 {
   "files": {
     "main.css": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css",
-    "main.js": "/irgendwas-mit-hardware/static/js/main.3bdd61f6.chunk.js",
-    "main.js.map": "/irgendwas-mit-hardware/static/js/main.3bdd61f6.chunk.js.map",
+    "main.js": "/irgendwas-mit-hardware/static/js/main.55100244.chunk.js",
+    "main.js.map": "/irgendwas-mit-hardware/static/js/main.55100244.chunk.js.map",
     "runtime-main.js": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js",
     "runtime-main.js.map": "/irgendwas-mit-hardware/static/js/runtime-main.397ede97.js.map",
-    "static/js/2.14d4ef39.chunk.js": "/irgendwas-mit-hardware/static/js/2.14d4ef39.chunk.js",
-    "static/js/2.14d4ef39.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.14d4ef39.chunk.js.map",
+    "static/js/2.1e3d72af.chunk.js": "/irgendwas-mit-hardware/static/js/2.1e3d72af.chunk.js",
+    "static/js/2.1e3d72af.chunk.js.map": "/irgendwas-mit-hardware/static/js/2.1e3d72af.chunk.js.map",
     "index.html": "/irgendwas-mit-hardware/index.html",
-    "precache-manifest.6f336be7cce0440e664959db2ff7c5cb.js": "/irgendwas-mit-hardware/precache-manifest.6f336be7cce0440e664959db2ff7c5cb.js",
+    "precache-manifest.ed38fc1247d7de2ad447a0bf01ce6071.js": "/irgendwas-mit-hardware/precache-manifest.ed38fc1247d7de2ad447a0bf01ce6071.js",
     "service-worker.js": "/irgendwas-mit-hardware/service-worker.js",
     "static/css/main.72d5f6dc.chunk.css.map": "/irgendwas-mit-hardware/static/css/main.72d5f6dc.chunk.css.map",
-    "static/js/2.14d4ef39.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.14d4ef39.chunk.js.LICENSE.txt",
+    "static/js/2.1e3d72af.chunk.js.LICENSE.txt": "/irgendwas-mit-hardware/static/js/2.1e3d72af.chunk.js.LICENSE.txt",
     "static/media/doublebuffering.svg": "/irgendwas-mit-hardware/static/media/doublebuffering.e2a7d841.svg",
     "static/media/doublebufferingvsync.svg": "/irgendwas-mit-hardware/static/media/doublebufferingvsync.9da84af2.svg",
-    "static/media/renderahead.svg": "/irgendwas-mit-hardware/static/media/renderahead.94d9177e.svg",
+    "static/media/fan2pin.svg": "/irgendwas-mit-hardware/static/media/fan2pin.3656dcab.svg",
+    "static/media/fan3pin.svg": "/irgendwas-mit-hardware/static/media/fan3pin.488dc046.svg",
+    "static/media/fan4pin.svg": "/irgendwas-mit-hardware/static/media/fan4pin.fcc8c8df.svg",
+    "static/media/renderahead.svg": "/irgendwas-mit-hardware/static/media/renderahead.8e42a557.svg",
     "static/media/triplebufferingvsync.svg": "/irgendwas-mit-hardware/static/media/triplebufferingvsync.591e2b3c.svg",
     "static/media/vrr.svg": "/irgendwas-mit-hardware/static/media/vrr.45f3de70.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.397ede97.js",
-    "static/js/2.14d4ef39.chunk.js",
+    "static/js/2.1e3d72af.chunk.js",
     "static/css/main.72d5f6dc.chunk.css",
-    "static/js/main.3bdd61f6.chunk.js"
+    "static/js/main.55100244.chunk.js"
   ]
 }
