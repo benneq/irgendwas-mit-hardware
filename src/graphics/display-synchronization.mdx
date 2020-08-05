@@ -58,7 +58,7 @@ Diese Technik wird bei stereoskopischen Ausgaben benutzt, und verwendet Double B
 
 ##### Render Ahead (flip queue)
 
-Beim Render Ahead werden Frames in einer Warteschlange (render ahead queue) vorberechnet und dann erzwungen hintereinander dargestellt. Das kann zu einer gleichmäßigeren Framerate führen, indem Performancelöcher mit den Frames aus der Warteschlange aufgefüllt werden. Aber je nach Länge und Füllstand der Warteschlange, erhält man dafür ein erhöhtes input lag.
+Beim Render Ahead werden Frames in einer Warteschlange (render ahead queue) vorberechnet und dann erzwungen hintereinander dargestellt. Das kann zu einer gleichmäßigeren Framerate führen, indem Performancelöcher mit den Frames aus der Warteschlange aufgefüllt werden. Aber je nach Länge und Füllstand der Warteschlange, kann ein erhöhtes input lag entstehen.
 
 Manche Entwickler benutzen Render Ahead mit insgesamt drei Buffern und bezeichnen es fälschlicherweise als Triple Buffering. Diese Technik verhält sich allerdings nur wie Triple Buffering solange die gerenderte Framerate unterhalb der Wiederholfrequnz liegt, weil in diesem Fall die Warteschlange schneller geleert als gefüllt wird. Sobald die Framerate darüber liegt erhält man ein erhöhtes input lag, weil die alten Frames aus der Warteschlange dargestellt werden, obwohl bereits aktuellere Frames eingereiht wurden.
 
