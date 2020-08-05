@@ -7,14 +7,38 @@ import { isEqual } from 'lodash-es';
 import NumberField from '../util/NumberField';
 
 
+const timingFormats = [
+    {
+        name: 'None',
+        hEffective: (h: number, v: number, r: number) => h,
+        vEffective: (h: number, v: number, r: number) => v,
+    },
+    {
+        name: 'CVT',
+        hEffective: (h: number, v: number, r: number) => h + (16 * Math.floor(((h * Math.max(0.2, 0.3 - ((3000 * ((1/r)-0.00055))/(v + 3)))) / (1 - Math.max(0.2, 0.3 - ((3000 * ((1/r)-0.00055))/(v + 3))))) / 16)),
+        vEffective: (h: number, v: number, r: number) => v + Math.floor((((v + 3) * 0.00055) / ((1/r) - 0.00055)) + 4),
+    },
+    {
+        name: 'CVT-RB',
+        hEffective: (h: number, v: number, r: number) => h + 160,
+        vEffective: (h: number, v: number, r: number) => v + Math.ceil((v * 0.00046) / ((1/r) - 0.00046)),
+    },
+    {
+        name: 'CVT-R2',
+        hEffective: (h: number, v: number, r: number) => h + 80,
+        vEffective: (h: number, v: number, r: number) => v + Math.ceil((v * 0.00046) / ((1/r) - 0.00046)),
+    },
+];
+
+
 const presets = [
-    { h: 1920, v: 1080, r: 60, c: 8 },
-    { h: 1920, v: 1080, r: 144, c: 8 },
-    { h: 1920, v: 1080, r: 240, c: 8 },
-    { h: 2560, v: 1440, r: 60, c: 8 },
-    { h: 2560, v: 1440, r: 144, c: 8 },
-    { h: 3840, v: 2160, r: 60, c: 8 },
-    { h: 3840, v: 2160, r: 144, c: 8 },
+    { h: 1920, v: 1080, r: 60, c: 8, t: timingFormats[3] },
+    { h: 1920, v: 1080, r: 144, c: 8, t: timingFormats[3] },
+    { h: 1920, v: 1080, r: 240, c: 8, t: timingFormats[3] },
+    { h: 2560, v: 1440, r: 60, c: 8, t: timingFormats[3] },
+    { h: 2560, v: 1440, r: 144, c: 8, t: timingFormats[3] },
+    { h: 3840, v: 2160, r: 60, c: 8, t: timingFormats[3] },
+    { h: 3840, v: 2160, r: 144, c: 8, t: timingFormats[3] },
 ];
 
 
@@ -38,8 +62,16 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
         setValue(value => ({ ...value, c: val || NaN }));
     };
 
+    const handleCVTChange = (val: typeof timingFormats[number]) => {
+        setValue(value => ({ ...value, t: val }));
+    };
+
     useEffect(() => {
-        const bandwidth = value.h * value.v * value.r * 3 * value.c;
+        const hEffective = value.t.hEffective(value.h, value.v, value.r);
+        const vEffective = value.t.vEffective(value.h, value.v, value.r);
+        console.log("h", hEffective)
+        console.log("v", vEffective)
+        const bandwidth = hEffective * vEffective * value.r * 3 * value.c;
         setBandwidth(bandwidth);
     }, [value]);
 
@@ -100,6 +132,16 @@ const DisplayBandwidthCalculator: React.FunctionComponent = () => {
                         onValueChange={handleColorDepthChange}
                         label="Farbtiefe"
                         helperText="in bit"
+                    />
+                </Grid>
+                <Grid item>
+                    <SelectField
+                        label="Timing Format"
+                        value={value.t}
+                        options={timingFormats}
+                        renderOption={preset => `${preset.name}`}
+                        onValueChange={handleCVTChange}
+                        valueComparator={isEqual}
                     />
                 </Grid>
             </Grid>
