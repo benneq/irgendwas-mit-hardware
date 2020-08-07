@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/irgendwas-mit-hardware`,
   plugins: [
     {
       resolve: `gatsby-plugin-mdx`,
