@@ -1,0 +1,72 @@
+---
+title: Framerate
+---
+
+
+import FramerateImage from '../../images/graphics/framerate.svg';
+import FrametimeImage from '../../images/graphics/frametime.svg';
+ 
+
+
+#### Framerate / FPS (frames per second)
+
+In FPS wird angegeben wie viele Frames pro Sekunde berechnet werden.
+
+
+
+##### Avg
+
+Dieser Wert gibt Auskunft über die durschnittliche Framerate und war lange Zeit die einzige Metrik für die Performance der Frameberechnung.
+
+Allerdings sagt dieser Wert nicht viel darüber aus wie flüssig die Bildausgabe erfolgt. So kann es beispielsweise passieren, dass viele schnelle Frames in regelmäßigen Abständen von wenigen sehr langsamen Frames unterbrochen werden. Das hat dann zwar keinen drastischen Einfluss auf die durchschnittliche Framerate, aber wird trotzdem in Form sehr störender Ruckler auf dem Bildschirm wahrgenommen.
+
+
+
+##### Min
+
+Mit Min FPS wird der niedrigste gemessene Wert angegeben. Das hat keinerlei Aussagekraft darüber wie flüssig oder stockend die Bildausgabe erfolgt, weil sich daraus nicht ableiten lässt, ob es sich um ein einmaliges Ereignis handelt oder die Framerate regelmäßig stark einbricht.
+
+
+
+##### Max
+
+Der Max FPS Wert stellt analog zur Min FPS Angabe den höchsten gemessenen Wert dar. Auch hiermit lässt sich aus denselben Gründen keine Aussage über die allgemeine Performance der Bildausgabe machen.
+
+
+
+##### x % Low
+
+Da in der Regel vor allem die Einbrüche der Framerate interessant sind, weil dadurch das Spielerlebnis getrübt wird, wurde die x % Low Metrik geschaffen, um einen einfachen Einblick in die Häufigkeit und Stärke der Frame Drops zu bekommen. Dazu wird über x % der langsamsten Frames der Durchschnittswert gebildet.
+
+Je größer der Abstand zwischen diesem Wert und der durchschnittlichen Framerate ist, desto wahrscheinlicher ist es, dass die Unregelmäßigkeiten bei der Dauer der Frameberechnung als störend wahrgenommen werden.
+
+<img src={FramerateImage} />
+
+
+
+
+#### Frametimes
+
+Als Frametime wird die Anzahl von Millisekunden zwischen den Frames bezeichnet. Gleichmäßige Frametimes resultieren in einer gleichmäßig flüssigen Bildausgabe.
+
+
+
+##### Avg
+
+Die durchschnittlichen Frametimes lassen sich direkt aus den durchschnittlichen FPS ableiten und geben daher auch genau so wenig Auskunft darüber wie flüssig die Bildausgabe erfolgt.
+
+Bei im Schnitt 60 FPS erhält man eine durchschnittliche Frametime von 16,67 ms.
+
+
+
+##### x % Low
+
+Mit dieser Metrik wird der Durchschnittswert der Frametimes für x % der langsamsten Frames angegeben.
+
+Um beispielsweise den 1 % Low Wert für eine Szene zu ermitteln, die aus 1000 Frames besteht, wird der Durschnitt der 10 langsamsten Frametimes berechnet.
+
+<img src={FrametimeImage} />
+
+
+
+<!-- https://www.youtube.com/watch?v=l6WgbfG_z-k -->

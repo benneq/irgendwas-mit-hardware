@@ -1,0 +1,107 @@
+---
+title: Display Synchronisation
+---
+
+
+
+import DoubleBufferingImage from '../../images/graphics/doublebuffering.svg';
+import DoubleBufferingVSyncImage from '../../images/graphics/doublebufferingvsync.svg';
+import TripleBufferingVSyncImage from '../../images/graphics/triplebufferingvsync.svg';
+import RenderAheadImage from '../../images/graphics/renderahead.svg';
+import VRRImage from '../../images/graphics/vrr.svg';
+
+
+
+#### Fixed Refresh Rate
+
+Bei Monitoren mit Fixed Refresh Rate werden die einzelnen Frames in festen Intervallen dargestellt: Beispielsweise alle 16,67 ms bei 60 Hz Wiederholfrequenz.
+
+
+
+##### Double Buffering
+
+Beim Double Buffering werden zwei getrennte Speicherbereiche für jeweils das Rendering (back buffer) und die Bildübertragung zum Monitor (front buffer) genutzt. Nachdem ein Frame fertig gerendert wurde werden die Buffer vertauscht (buffer swap).
+
+In dieser Form des Double Bufferings kann der buffer swap mitten in der Übertragung eines Bildes zum Monitor stattfinden, sodass der obere, bereits übertragene Teil zum alten Frame gehört und der untere Teil zum neuen Frame. Die Folge ist das sogenannte Tearing. Bei entsprechend hohen Frameraten kann das Bild auf dem Monitor auch aus deutlich mehr als 2 Frameteilen bestehen.
+
+<img src={DoubleBufferingImage} />
+
+
+
+##### VSync (mit Double Buffering)
+
+Um Tearing zu vermeiden, wird bei der Verwendung von VSync der Buffertausch zusätzlich so lange verzögert bis der Inhalt des front buffers vollständig zum Monitor übertragen wurde. D.h. die Buffer werden erst getauscht wenn sowohl die Grafikkarte den Frame fertig gerendert hat, als auch der Monitor bereit für das nächste Bild ist. Dadurch wird die maximale Framerate auf die Wiederholfrequnz des Monitors limitiert.
+
+Es entsteht eine zusätzliche Verzögerung bei der Bildübertragung, weil das frisch gerenderte Bild nicht sofort dargestellt werden kann, sondern auf den Monitor warten muss. Diese Zeitspanne trägt zur Vergrößerung des input lags bei.
+
+Außerdem kann die Framerate halbiert werden, wenn das Rendering des nächsten Frames nur minimal länger dauert als das Synchronisationsintervall, weil dann bereits wieder die Bildübertragung zum Monitor angestoßen wurde und abgewartet werden muss.
+
+Bei ungleichmäßigen Frameraten unterhalb der Wiederholfrequenz des Monitors kann sogenanntes Stuttering entstehen, indem die Frames in ungleichmäßigen Abständen teilweise mehrfach ausgegeben werden: Die Framerate auf dem Monitor springt dann zwischen der vollen und halben Wiederholfrequenz hin und her.
+
+<img src={DoubleBufferingVSyncImage} />
+
+
+
+##### Triple Buffering (mit VSync)
+
+Beim Triple Buffering wird ein zweiter back buffer verwendet, um die Vorteile von Double Buffering und VSync zu vereinen. So wird die Grafikkarte nicht mehr durch die Wiederholfrequenz des Monitors in der Framerate limitiert, während gleichzeitig immer das aktuellste fertige Bild für die Übertragung zum Monitor bereitsteht.
+
+Man erhält also ein vergleichbar niedriges input lag wie beim Double Buffering ohne VSync und gleichzeitig kein Tearing.
+
+(Die Framerate kann von externen Tools nicht korrekt ausgelesen werden, da diese nur den front buffer swap zählen, welcher weiterhin synchron mit der Wiederholfrequnz des Monitors stattfindet)
+
+(In manchen Spielen und Grafikbibliotheken wird fälschlicherweise Render Ahead als Triple Buffering bezeichnet, was zum schlechten Image von echtem Triple Buffering beiträgt)
+
+<img src={TripleBufferingVSyncImage} />
+
+
+
+##### Quad Buffering
+
+Diese Technik wird bei stereoskopischen Ausgaben benutzt, und verwendet Double Buffering für jedes Auge.
+
+
+
+##### Render Ahead (flip queue)
+
+Beim Render Ahead werden Frames in einer Warteschlange (render ahead queue) vorberechnet und dann erzwungen hintereinander dargestellt. Das kann zu einer gleichmäßigeren Framerate führen, indem Performancelöcher mit den Frames aus der Warteschlange aufgefüllt werden. Aber je nach Länge und Füllstand der Warteschlange, kann ein erhöhtes input lag entstehen.
+
+Manche Entwickler benutzen Render Ahead mit insgesamt drei Buffern und bezeichnen es fälschlicherweise als Triple Buffering. Diese Technik verhält sich allerdings nur wie Triple Buffering solange die gerenderte Framerate unterhalb der Wiederholfrequnz liegt, weil in diesem Fall die Warteschlange schneller geleert als gefüllt wird. Sobald die Framerate darüber liegt erhält man ein erhöhtes input lag, weil die alten Frames aus der Warteschlange dargestellt werden, obwohl bereits aktuellere Frames eingereiht wurden.
+
+<img src={RenderAheadImage} />
+
+
+##### Fast Sync / Enhanced Sync
+
+Diese Technolgien werden als moderne Alternativen zu VSync gehandelt. Dabei wird oberhalb der Wiederholfrequenz des Monitors Triple Buffering mit VSync verwendet und unterhalb der Wiederholfrequenz wird VSync deaktiviert, wodurch Stuttering reduziert wird, aber Tearing wieder auftreten kann.
+
+
+
+#### Variable Refresh Rate (VRR)
+
+Bei Variable Refresh Rate Monitoren kann die Wiederholfrequenz kontinuierlich und stufenlos innerhalb eines bestimmten Bereichs (VRR range) angepasst werden. Dadurch können die fertig gerenderten Frames ohne Verzögerung zum Monitor übertragen werden, wodurch Tearing und Stuttering vermieden und das input lag auf ein Minimum reduziert wird.
+
+Das funktioniert aber nur solange die Framerate sich innerhalb der VRR range befindet. Außerhalb dieses Bereichs ist man wieder auf die Möglichkeiten von Fixed Refresh Rate Monitoren beschränkt. Daher ist es ratsam die Framerate durch Anpassung der Renderauflösung und -qualität so einzustellen, dass die VRR Range nicht verlassen wird. Zusätzlich kann ein Framelimiter verwendet werden, damit die obere Grenze nicht überschritten wird.
+
+Diese Technologie wird auch in mobilen Geräten verwendet, um Energie zu sparen, indem die Wiederholfrequenz temporär gesenkt wird.
+
+<img src={VRRImage} />
+
+
+
+##### G-Sync / FreeSync / Adaptive-Sync / VRR
+
+Adaptive-Sync ist Teil des DisplayPort 1.2a Standards.
+
+FreeSync ist AMDs Implementierung von Adaptive-Sync.
+
+G-Sync Desktop Monitore benötigen ein G-Sync Modul. In Notebooks nutzt G-Sync den eDP Standard.
+
+VVR ist Teil von HDMI 2.1.
+
+
+
+<!-- https://www.anandtech.com/show/2794 -->
+<!-- https://www.anandtech.com/show/11664/amd-radeon-software-crimson-relive-edition-1772/6 -->
+<!-- https://www.youtube.com/watch?v=bMwY_dlZYiM -->
+<!-- https://en.wikipedia.org/wiki/Variable_refresh_r -->
