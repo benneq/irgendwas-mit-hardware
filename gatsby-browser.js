@@ -2,6 +2,7 @@ import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import Layout from './src/components/layout'
+import LightboxImage from "./src/components/common/LightboxImage";
 
 let theme = createMuiTheme({
     overrides: {
@@ -32,7 +33,7 @@ const components = {
     th: ({ align, ...props }) => <TableCell align={align || undefined} {...props} />,
     thead: (props) => <TableHead {...props} />,
     hr: Divider,
-    img: (props) => <div style={{ marginBottom: '1.45rem' }}><img alt="" {...props} /></div>,
+    img: (props) => <LightboxImage style={{ marginBottom: '1.45rem' }} {...props} />,
 }
 
 export const wrapPageElement = ({ element, props }) => {
