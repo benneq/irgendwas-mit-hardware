@@ -23,7 +23,7 @@ const components = {
     h5: (props) => <Typography variant="h5" gutterBottom {...props} />,
     h6: (props) => <Typography variant="h6" gutterBottom {...props} />,
     p: (props) => <Typography variant="body2" gutterBottom {...props} />,
-    table: (props) => <Table {...props} />,
+    table: (props) => <div style={{ overflowX: 'auto' }}><Table {...props} /></div>,
     tr: (props) => {
         const child = Array.isArray(props.children) ? props.children[0] : props.children;
         return <TableRow hover={!!child && child.props.mdxType === 'td'} {...props} />

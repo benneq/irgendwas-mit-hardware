@@ -48,6 +48,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: 'auto',
 		marginBottom: theme.spacing(4),
 		boxSizing: 'content-box',
+		width: `calc(100% - ${theme.spacing(2)}px)`, // for horizontal table scroll
 		maxWidth: '100ch',
 		flexGrow: 1,
 		padding: theme.spacing(1),
