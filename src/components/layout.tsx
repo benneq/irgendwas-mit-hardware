@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Layout: React.FunctionComponent<PageProps<object, { frontmatter: any }>> = (props) => {
+const Layout: React.FunctionComponent<PageProps<object, { frontmatter?: {[key: string]: any} }>> = (props) => {
     const { children, location, pageContext } = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -75,7 +75,7 @@ const Layout: React.FunctionComponent<PageProps<object, { frontmatter: any }>> =
     return (
         <div className={classes.root}>
 			<CssBaseline />
-			<SEO title={pageContext.frontmatter.title} />
+			<SEO title={pageContext.frontmatter?.title} />
 			<HideOnScroll>
 				<AppBar position="fixed" className={classes.appBar}>
 					<Toolbar>
