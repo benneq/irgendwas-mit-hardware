@@ -15,14 +15,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Cache dependencies
-      uses: actions/cache@v2
+    - name: Get npm cache directory
+      id: npm-cache
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+    - uses: actions/cache@v2
       with:
-        path: |
-          '**/node_modules'
-        key: ${{ runner.OS }}-modules-${{ hashFiles('**/package-lock.json') }}
+        path: ${{ steps.npm-cache.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - name: Install Packages
-      run: npm install
+      run: npm ci
     - name: Build page
       run: npm run build
     - name: Deploy to gh-pages
