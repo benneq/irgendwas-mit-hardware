@@ -32,7 +32,7 @@ const components = {
     th: ({ align, ...props }) => <TableCell align={align || undefined} {...props} />,
     thead: (props) => <TableHead {...props} />,
     hr: Divider,
-    // img: (props) => <div style={{ marginBottom: '1.45rem' }}><img {...props} /></div>,
+    img: (props) => <div style={{ marginBottom: '1.45rem' }}><img alt="" {...props} /></div>,
 }
 
 export const wrapPageElement = ({ element, props }) => {
