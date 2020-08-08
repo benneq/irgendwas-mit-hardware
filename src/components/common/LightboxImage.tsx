@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, makeStyles } from '@material-ui/core';
+import { RemoveScroll } from 'react-remove-scroll';
 
 
 
@@ -46,9 +47,9 @@ const LightboxImage: React.FunctionComponent<Props> = (props) => {
                 open={open}
                 onClose={handleClose}
             >
-                <div className={classes.paper}>
+                <RemoveScroll className={classes.paper}>
                     <img {...rest} />
-                </div>
+                </RemoveScroll>
             </Modal>
         </div>
     )
