@@ -20,7 +20,7 @@ const SearchResults: React.FunctionComponent<PageProps> = ({ location }) => {
 
     const index = Index.load<{ title: string, slug: string, tags: string[] }>(data.siteSearchIndex.index);
 
-    const results = index.search(query, {})
+    const results = index.search(query, { fields: { tags: 1 }, expand: true } as any)
         .map(result => index.documentStore.getDoc(result.ref));
 
     return (
