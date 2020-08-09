@@ -2,6 +2,22 @@ module.exports = {
   pathPrefix: `/irgendwas-mit-hardware`,
   plugins: [
     {
+      resolve: `gatsby-plugin-slug`
+    },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        fields: [`title`, `tags`],
+        resolvers: {
+          Mdx: {
+            title: node => node.frontmatter.title,
+            tags: node => node.frontmatter.tags,
+            slug: node => node.fields.slug,
+          }
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
     },
     {

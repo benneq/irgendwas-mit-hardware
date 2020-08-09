@@ -1,20 +1,27 @@
 import React from 'react'
-import { PageProps } from 'gatsby';
+import { PageProps, useStaticQuery, graphql } from 'gatsby';
 import { Typography, List } from '@material-ui/core';
 import SearchResultItem from './searchResultItem';
-
+import { Index } from "elasticlunr"
 
 
 const SearchResults: React.FunctionComponent<PageProps> = ({ location }) => {
     const { search } = location;
     const searchParams = new URLSearchParams(search);
     const query = searchParams.get('q') || '';
-    // const searchTokens = tokenizeQuery(query);
-    // const searchResults = filterIndex(REVERSED_INDEX, searchTokens);
-    // const sortedResults = sortResults(searchResults);
-    const sortedResults = [];
-    const ROUTES = {};
 
+    const data = useStaticQuery(graphql`
+        query SearchIndexQuery {
+            siteSearchIndex {
+                index
+            }
+        }
+    `);
+
+    const index = Index.load<{ title: string, slug: string, tags: string[] }>(data.siteSearchIndex.index);
+
+    const results = index.search(query, {})
+        .map(result => index.documentStore.getDoc(result.ref));
 
     return (
         <div>
@@ -23,8 +30,8 @@ const SearchResults: React.FunctionComponent<PageProps> = ({ location }) => {
              </Typography>
 
             <List>
-                {sortedResults.map((result, i) => 
-                    <SearchResultItem key={i} title={ROUTES[result.url].title} url={result.url} tokens={result.tokens} />
+                {results.map((result, i) => 
+                    <SearchResultItem key={i} title={result.title} url={result.slug} tokens={result.tags} />
                 )}
             </List>
         </div>
