@@ -1,9 +1,8 @@
 import React from 'react';
 import { IconButton, Drawer, Toolbar, useTheme, useMediaQuery } from '@material-ui/core';
 import { Search as SearchIcon, ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-import SearchAutocomplete from './searchAutocomplete';
-import { isString } from 'util';
 import { navigate } from 'gatsby';
+import SearchInput from './searchInput';
 
 
 
@@ -25,12 +24,11 @@ const Search: React.FunctionComponent = () => {
 		setInputValue(val);
 	};
 
-	const handleSubmit = (val: string | React.MouseEvent) => {
-		if(!isString(val)) {
-			val = inputValue;
+	const handleSubmit = () => {
+		setOpen(false);
+		if(inputValue) {
+			navigate(`/search?${new URLSearchParams({q: inputValue}).toString()}`);
 		}
-        setOpen(false);
-        navigate(`/search?${new URLSearchParams({q: val}).toString()}`);
 	};
 
 	return (
@@ -47,7 +45,7 @@ const Search: React.FunctionComponent = () => {
 					>
 						<ArrowBackIcon />
 					</IconButton>
-					<SearchAutocomplete
+					<SearchInput
 						value={inputValue}
 						onChange={handleInputValueChange}
 						onSubmit={handleSubmit}
@@ -60,7 +58,7 @@ const Search: React.FunctionComponent = () => {
 
 			{isMobile
 				? <IconButton edge="end" aria-label="search" color="inherit" onClick={handleDrawerOpen}><SearchIcon /></IconButton>
-                : <SearchAutocomplete value={inputValue} onChange={handleInputValueChange} onSubmit={handleSubmit} showSearchIcon />
+                : <SearchInput value={inputValue} onChange={handleInputValueChange} onSubmit={handleSubmit} showSearchIcon />
 			}
 		</>
 	);
