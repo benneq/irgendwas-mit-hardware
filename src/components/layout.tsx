@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { PageProps } from 'gatsby';
-import { makeStyles, CssBaseline, useTheme, useMediaQuery, AppBar, Toolbar, IconButton, Typography, Drawer, Fab } from '@material-ui/core';
-import { Menu as MenuIcon, KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
+import { makeStyles, CssBaseline, useTheme, useMediaQuery, Drawer, Fab } from '@material-ui/core';
+import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import Navigation from './navigation';
-import HideOnScroll from './hideOnScroll';
 import ScrollTop from './scrollTop';
 import SEO from './seo';
-import Search from './search/search';
+import Header from './header';
 
 
 
@@ -23,23 +22,8 @@ const useStyles = makeStyles(theme => ({
 			flexShrink: 0,
 		},
 	},
-	appBar: {
-		[theme.breakpoints.up('sm')]: {
-			width: `calc(100% - ${drawerWidth}px)`,
-			marginLeft: drawerWidth,
-		},
-	},
-	menuButton: {
-		marginRight: theme.spacing(2),
-		[theme.breakpoints.up('sm')]: {
-			display: 'none',
-		},
-	},
 	// necessary for content to be below app bar
 	toolbar: theme.mixins.toolbar,
-	grow: {
-		flexGrow: 1,
-	},
 	drawerPaper: {
 		width: drawerWidth,
 	},
@@ -77,25 +61,7 @@ const Layout: React.FunctionComponent<PageProps<object, { frontmatter?: {[key: s
         <div className={classes.root}>
 			<CssBaseline />
 			<SEO title={pageContext.frontmatter?.title} />
-			<HideOnScroll>
-				<AppBar position="fixed" className={classes.appBar}>
-					<Toolbar>
-						<IconButton
-							color="inherit"
-							aria-label="open drawer"
-							edge="start"
-							onClick={handleDrawerToggle}
-							className={classes.menuButton}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" noWrap className={classes.grow}>
-							Irgendwas mit Hardware
-            			</Typography>
-						<Search />
-					</Toolbar>
-				</AppBar>
-			</HideOnScroll>
+			<Header onMenuClick={handleDrawerToggle} />
 			<nav className={classes.drawer}>
 				<Drawer
 					variant={isMobile ? "temporary" : "permanent"}
