@@ -1,5 +1,8 @@
 module.exports = {
   pathPrefix: `/irgendwas-mit-hardware`,
+  siteMetadata: {
+    title: "Irgendwas mit Hardware",
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-slug`

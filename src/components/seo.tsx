@@ -1,8 +1,8 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
 
-const pageTitle = "Irgendwas mit Hardware";
 
 type Props = {
     title?: string
@@ -10,6 +10,18 @@ type Props = {
 
 const SEO: React.FunctionComponent<Props> = (props) => {
     const { title } = props;
+
+    const data = useStaticQuery<{ site: { siteMetadata: { pageTitle: string } } }>(graphql`
+        query SEO {
+            site {
+                siteMetadata {
+                    pageTitle: title
+                }
+            }
+        }
+    `);
+
+    const { pageTitle } = data.site.siteMetadata;
 
     return (
         <Helmet title={title} titleTemplate={`%s | ${pageTitle}`} defaultTitle={pageTitle} />
