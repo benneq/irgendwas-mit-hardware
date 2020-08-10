@@ -92,3 +92,11 @@ Um die Performance von MLC, TLC, QLC oder PLC SSDs zu erhöhen wird ein Teil der
 ##### Wear leveling
 
 Speicherzellen einer SSD nutzen sich ab wenn sie beschrieben werden. Mittels wear leveling sorgt der SSD Controller dafür, dass die Schreibzugriffe gleichmäßig auf alle Speicherzellen verteilt werden, damit nicht manche Bereiche des Speichers frühzeitig ausfallen, weil sie immer wieder beschrieben wurden.
+
+
+
+##### TRIM
+
+Da Dateisysteme in der Regel keine Daten löschen, sondern sie nur als "unbenutzt" kennzeichnen, weiß eine SSD nicht welche Speicherzellen tatsächlich noch benutzt werden und welche als freier Speicher angesehen können.
+
+Mit dem TRIM Kommando kann das Betriebssystem die SSD über die ungenutzten Speicherbereiche informieren, sodass die SSD die zugehörigen Speicherzellen wieder für Schreiboperationen nutzen kann. Das Ergebnis ist eine höhere Schreibperformance und eine geringere Abnutzung der Speicherzellen.
