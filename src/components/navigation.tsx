@@ -20,7 +20,10 @@ const menu = [
     { text: 'RAM', to: '/memory' },
     { text: 'USB', to: '/usb' },
     { text: 'PCIe', to: '/pcie' },
-    { text: 'HDD', to: '/hdd' },
+    { text: 'Speichermedien', children: [
+        { text: 'HDD', to: '/storage/hdd' },
+        { text: 'SSD', to: '/storage/ssd' },
+    ]},
     { text: 'Lüfter', children: [
         { text: 'Anschlüsse', to: '/fan/connectors' },
         { text: 'Specs', to: '/fan/specs' },
