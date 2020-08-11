@@ -1,19 +1,10 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
-import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider, createMuiTheme, responsiveFontSizes, useMediaQuery } from '@material-ui/core';
 import Layout from './src/components/layout'
 import LightboxImage from "./src/components/common/LightboxImage";
 
-let theme = createMuiTheme({
-    overrides: {
-        MuiTypography: {
-            gutterBottom: {
-                marginBottom: '1.45rem',
-            },
-        },
-    },
-});
-theme = responsiveFontSizes(theme);
+
 
 const components = {
     h1: (props) => <Typography variant="h1" gutterBottom {...props} />,
@@ -36,16 +27,41 @@ const components = {
     img: (props) => <LightboxImage style={{ marginBottom: '1.45rem' }} {...props} />,
 }
 
+
+
 export const wrapPageElement = ({ element, props }) => {
     return (
         <Layout {...props}>{element}</Layout>
     )
 }
 
-export const wrapRootElement = ({ element }) => {
+
+
+const RootElementWrapper = ({ element }) => {
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+    let theme = createMuiTheme({
+        palette: {
+            type: prefersDarkMode ? 'dark' : 'light',
+        },
+        overrides: {
+            MuiTypography: {
+                gutterBottom: {
+                    marginBottom: '1.45rem',
+                },
+            },
+        },
+    });
+
+    theme = responsiveFontSizes(theme);
+
     return (
         <ThemeProvider theme={theme}>
             <MDXProvider components={components}>{element}</MDXProvider>
         </ThemeProvider>
-    )
-}
+    );
+};
+
+
+
+export const wrapRootElement = (props) => <RootElementWrapper {...props} />
