@@ -50,6 +50,11 @@ const RootElementWrapper = ({ element }) => {
                     marginBottom: '1.45rem',
                 },
             },
+            MuiFormLabel: {
+                root: {
+                    whiteSpace: 'nowrap',
+                },
+            },
         },
     });
 

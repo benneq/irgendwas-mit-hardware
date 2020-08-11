@@ -107,7 +107,7 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                 </Grid>
                 <Grid item>
                     <NumberField
-                        label="Bandbreite (pro Channel)"
+                        label="Bandbreite (pro Modul)"
                         helperText="In GB/sec"
                         disabled
                         value={bandwidth}
