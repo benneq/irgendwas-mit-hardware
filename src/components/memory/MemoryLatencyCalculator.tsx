@@ -23,6 +23,7 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
     const clockCycleTime = calculateClockCycleTime(frequency, frequencyMultiplier);
     const clockCyclesPerNs = calculateClockCyclesPerNs(clockCycleTime);
     const latency = calculateLatency(timing, clockCyclesPerNs);
+    const bandwidth = 64*frequency/frequencyMultiplier/8/1000;
 
     const handleTypeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         setValue(value => ({ ...value, type: e.target.value as MemoryType }));
@@ -102,6 +103,15 @@ const MemoryLatencyCalculator: React.FunctionComponent = () => {
                         helperText="In ns"
                         disabled
                         value={latency}
+                    />
+                </Grid>
+                <Grid item>
+                    <NumberField
+                        label="Bandbreite (pro Channel)"
+                        helperText="In GB/sec"
+                        disabled
+                        value={bandwidth}
+                        allowNegative={false}
                     />
                 </Grid>
             </Grid>
