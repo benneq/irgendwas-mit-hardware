@@ -25,6 +25,7 @@ const components = {
     thead: (props) => <TableHead {...props} />,
     hr: Divider,
     img: (props) => <LightboxImage style={{ marginBottom: '1.45rem' }} {...props} />,
+    inlineCode: (props) => <code style={{ fontSize: '1rem' }} {...props} />,
 }
 
 

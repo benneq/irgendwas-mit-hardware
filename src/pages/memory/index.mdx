@@ -4,10 +4,60 @@ tags: ['RAM', 'Arbeitsspeicher', 'latency', 'Latenz']
 ---
 
 
-
+import MemoryBandwidthCalculator from '../../components/memory/MemoryBandwidthCalculator'
 import MemoryLatencyCalculator from '../../components/memory/MemoryLatencyCalculator'
 import MemoryChannelCalculator from '../../components/memory/MemoryChannelCalculator'
 
 
+
+#### SDR SDRAM (synchronous dynamic random-access memory)
+
+Prefetching-Faktor = 1
+
+
+
+#### DDR SDRAM (double data rate SDRAM)
+
+Beim DDR SDRAM wurde die Speichertransferrate im Vergleich zum ursprünglichen SDR SDRAM bei gleicher Taktrate verdoppelt, indem sowohl bei der auf- als auch bei der absteigenden Flanke des Taktsignals ein Datenbit übertragen wird.
+
+##### DDR
+
+Prefetching-Faktor = 2
+
+##### DDR2
+
+Prefetching-Faktor = 4
+
+##### DDR3
+
+Prefetching-Faktor = 8
+
+##### DDR4
+
+Prefetching-Faktor = 8
+
+##### DDR5
+
+Prefetching-Faktor = 16
+
+
+
+#### Speichertransferrate
+
+`Takt (in MHz) * Busbreite (in bit) * Prefetching-Faktor = Speichertransferrate (in Mbit/s)`
+
+<MemoryBandwidthCalculator />
+
+
+
+#### &nbsp;
+
 <MemoryLatencyCalculator />
+
+#### &nbsp;
+
 <MemoryChannelCalculator />
+
+
+
+<!-- https://en.wikipedia.org/wiki/Double_data_rate -->
