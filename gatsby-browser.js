@@ -56,6 +56,11 @@ const RootElementWrapper = ({ element }) => {
                     whiteSpace: 'nowrap',
                 },
             },
+            MuiTextField: {
+                root: {
+                    minWidth: 166
+                }
+            },
         },
     });
 
