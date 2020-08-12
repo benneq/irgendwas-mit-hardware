@@ -1,85 +1,180 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import PositiveIntegerField from '../common/PositiveIntegerField';
 import NumberField from '../common/NumberField';
 import SelectField from '../common/SelectField';
 import { isEqual } from 'lodash-es';
+import { ValueOf } from '../../utils/types.util';
 
+
+
+const calc = (sdram: ValueOf<typeof SDRAM>, chipClockRate?: number, busClockRate?: number, transferRate?: number) => {
+    if(transferRate === undefined) {
+        transferRate = chipClockRate * sdram.prefetch || busClockRate * sdram.type.multiplier;
+    }
+
+    if(chipClockRate === undefined) {
+        chipClockRate = transferRate / sdram.prefetch;
+    }
+
+    if(busClockRate === undefined) {
+        busClockRate = transferRate / sdram.type.multiplier;
+    }
+
+    const bandwidth = transferRate * sdram.busWidth / 8;
+
+    return {
+        type: sdram,
+        chipClockRate,
+        transferRate,
+        busClockRate,
+        bandwidth,
+    }
+};
+
+const sdramTypeOf = (name: string, multiplier: number) => {
+    return {
+        name,
+        multiplier
+    }
+};
+
+const sdramOf = (name: string, type: ValueOf<typeof SDRAM_TYPE>, busWidth: number, prefetch: number) => {
+    return {
+        name,
+        type,
+        busWidth,
+        prefetch
+    }
+};
+
+const SDRAM_TYPE = {
+    'SDR': sdramTypeOf('SDR', 1),
+    'DDR': sdramTypeOf('DDR', 2),
+};
+
+const SDRAM = {
+    'SDR': sdramOf('SDR', SDRAM_TYPE.SDR, 64, 1),
+    'DDR': sdramOf('DDR', SDRAM_TYPE.DDR, 64, 2),
+    'DDR2': sdramOf('DDR2', SDRAM_TYPE.DDR, 64, 4),
+    'DDR3': sdramOf('DDR3', SDRAM_TYPE.DDR, 64, 8),
+    'DDR4': sdramOf('DDR4', SDRAM_TYPE.DDR, 64, 8),
+    'DDR5': sdramOf('DDR5', SDRAM_TYPE.DDR, 64, 16),
+};
 
 const presets = [
-    { name: 'SDR-66', c: 66, b: 64, p: 1 },
-    { name: 'DDR-400', c: 200, b: 64, p: 2 },
-    { name: 'DDR2-800', c: 200, b: 64, p: 4 },
-    { name: 'DDR3-1600', c: 200, b: 64, p: 8 },
-    { name: 'DDR4-2133', c: 266, b: 64, p: 8 },
-    { name: 'DDR5-5200', c: 325, b: 64, p: 16 },
+    calc(SDRAM.SDR, 66.67, undefined, undefined),
+    calc(SDRAM.DDR, 200, undefined, undefined),
+    calc(SDRAM.DDR2, 200, undefined, undefined),
+    calc(SDRAM.DDR3, 200, undefined, undefined),
+    calc(SDRAM.DDR4, 266.67, undefined, undefined),
+    calc(SDRAM.DDR5, 325, undefined, undefined),
 ];
+
+
 
 const MemoryBandwidthCalculator: React.FunctionComponent = () => {
     const [value, setValue] = useState(presets[4]);
 
-    const handleClockrateChange = (val?: number) => {
-        setValue(value => ({ ...value, c: val || NaN }));
+    const handleTypeChange = (type: ValueOf<typeof SDRAM>) => {
+        setValue(value => calc(type, undefined, undefined, value.transferRate));
     };
 
-    const handleBuswidthChange = (val?: number) => {
-        setValue(value => ({ ...value, b: val || NaN }));
+    const handleChipClockRateChange = (chipClockRate?: number) => {
+        setValue(value => calc(value.type, chipClockRate, undefined, undefined));
     };
 
-    const handlePrefetchingFactorChange = (val?: number) => {
-        setValue(value => ({ ...value, p: val || NaN }));
+    const handleBusClockRateChange = (busClockRate?: number) => {
+        setValue(value => calc(value.type, undefined, busClockRate, undefined));
     };
 
-    const bandwidth = value.c * value.b * value.p;
+    const handleTransferRateChange = (transferRate?: number) => {
+        setValue(value => calc(value.type, undefined, undefined, transferRate));
+    };
+
+
 
     return (
         <>
-            <Grid container>
+            <Grid container direction="column" spacing={2}>
                 <Grid item>
                     <SelectField
                         label="Presets"
                         value={value}
                         options={presets}
-                        renderOption={preset => `${preset.name}`}
+                        renderOption={preset => `${preset.type.name}-${Math.floor(preset.transferRate)}`}
                         onValueChange={setValue}
                         valueComparator={isEqual}
                     >
                         Custom
                     </SelectField>
                 </Grid>
-            </Grid>
-            <Grid container spacing={2}>
                 <Grid item>
-                    <NumberField
-                        label="Takt"
-                        helperText="In MHz"
-                        value={value.c}
-                        onValueChange={handleClockrateChange}
-                        allowNegative={false}
-                    />
-                </Grid>
-                <Grid item>
-                    <PositiveIntegerField
-                        label="Busbreite"
-                        helperText="In bit"
-                        value={value.b}
-                        onValueChange={handleBuswidthChange}
-                    />
-                </Grid>
-                <Grid item>
-                    <PositiveIntegerField
-                        label="Prefetching-Faktor"
-                        value={value.p}
-                        onValueChange={handlePrefetchingFactorChange}
-                    />
-                </Grid>
-                <Grid item>
-                    <NumberField
-                        label="Bandbreite"
-                        helperText="In Mbit/s"
-                        value={bandwidth}
-                        disabled
-                    />
+                    <Grid container spacing={2}>
+                        <Grid item>
+                            <SelectField
+                                label="SDRAM Typ"
+                                value={value.type}
+                                options={[SDRAM.SDR, SDRAM.DDR, SDRAM.DDR2, SDRAM.DDR3, SDRAM.DDR4, SDRAM.DDR5]}
+                                renderOption={type => type.name}
+                                onValueChange={handleTypeChange}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <NumberField
+                                label="Bus Takt"
+                                helperText="In MHz"
+                                value={value.busClockRate}
+                                onValueChange={handleBusClockRateChange}
+                                allowNegative={false}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <NumberField
+                                label="Transferrate"
+                                helperText="In MT/s"
+                                value={value.transferRate}
+                                onValueChange={handleTransferRateChange}
+                                allowNegative={false}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item>
+                            <NumberField
+                                label="Chip Takt"
+                                helperText="In MHz"
+                                value={value.chipClockRate}
+                                onValueChange={handleChipClockRateChange}
+                                allowNegative={false}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <NumberField
+                                label="Busbreite"
+                                helperText="In bit"
+                                value={value.type.busWidth}
+                                disabled
+                            />
+                        </Grid>
+                        <Grid item>
+                            <NumberField
+                                label="Prefetch"
+                                helperText="In bit"
+                                value={value.type.prefetch}
+                                disabled
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item>
+                            <NumberField
+                                label="Bandbreite"
+                                helperText="In MB/s"
+                                value={value.bandwidth}
+                                disabled
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </>
