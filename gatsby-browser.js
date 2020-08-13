@@ -1,4 +1,5 @@
 import React from "react"
+import "./src/styles/global.scss";
 import { MDXProvider } from "@mdx-js/react"
 import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider, createMuiTheme, responsiveFontSizes, useMediaQuery } from '@material-ui/core';
 import Layout from './src/components/layout'

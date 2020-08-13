@@ -5,6 +5,9 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-sass`
+    },
+    {
       resolve: `gatsby-plugin-slug`
     },
     {
