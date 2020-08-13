@@ -1,5 +1,5 @@
 a.anchor {
-    display: none;
+    visibility: hidden;
     color: inherit;
     fill: currentColor;
     padding-right: 4px;
@@ -8,6 +8,12 @@ a.anchor {
 
 h1, h2, h3, h4, h5, h6 {
     &:hover a.anchor {
-        display: initial;    
+        visibility: visible;
+    }
+
+    @media (hover: none) {
+        a.anchor {
+            visibility: visible;
+        }
     }
 }
