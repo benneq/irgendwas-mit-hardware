@@ -20,14 +20,14 @@ const calc = (sdram: ValueOf<typeof SDRAM>, chipClockRate?: number, busClockRate
         busClockRate = transferRate / sdram.type.multiplier;
     }
 
-    const bandwidth = transferRate * sdram.busWidth / 8;
+    const dataTransferRate = transferRate * sdram.busWidth / 8;
 
     return {
         type: sdram,
         chipClockRate,
         transferRate,
         busClockRate,
-        bandwidth,
+        dataTransferRate,
     }
 };
 
@@ -168,9 +168,9 @@ const MemoryBandwidthCalculator: React.FunctionComponent = () => {
                     <Grid container spacing={2}>
                         <Grid item>
                             <NumberField
-                                label="Bandbreite"
+                                label="Datenübertragungsrate"
                                 helperText="In MB/s"
-                                value={value.bandwidth}
+                                value={value.dataTransferRate}
                                 disabled
                             />
                         </Grid>
