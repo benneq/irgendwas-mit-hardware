@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { PageProps } from 'gatsby';
+import './layout.css';
 import { makeStyles, CssBaseline, useTheme, useMediaQuery, Drawer, Fab } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import Navigation from './navigation';
