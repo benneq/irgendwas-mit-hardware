@@ -24,7 +24,7 @@ const SEO: React.FunctionComponent<Props> = (props) => {
     const { pageTitle } = data.site.siteMetadata;
 
     return (
-        <Helmet title={title} titleTemplate={`%s | ${pageTitle}`} defaultTitle={pageTitle} />
+        <Helmet title={title} titleTemplate={`%s | ${pageTitle}`} defaultTitle={pageTitle} defer={false} />
     )
 }
 

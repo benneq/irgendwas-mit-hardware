@@ -42,6 +42,11 @@ const RootElementWrapper = ({ element }) => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     let theme = createMuiTheme({
+        props: {
+            MuiUseMediaQuery: {
+                noSsr: true
+            },
+        },
         palette: {
             type: prefersDarkMode ? 'dark' : 'light',
         },
