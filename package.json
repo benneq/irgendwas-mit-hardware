@@ -25,6 +25,7 @@
     "gatsby-plugin-manifest": "^2.4.22",
     "gatsby-plugin-mdx": "^1.2.34",
     "gatsby-plugin-sass": "^2.3.12",
+    "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-slug": "^1.1.0",
     "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-source-filesystem": "^2.3.24",

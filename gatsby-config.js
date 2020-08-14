@@ -2,8 +2,12 @@ module.exports = {
   pathPrefix: `/irgendwas-mit-hardware`,
   siteMetadata: {
     title: "Irgendwas mit Hardware",
+    siteUrl: `https://benneq.github.io/irgendwas-mit-hardware`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`
+    },
     {
       resolve: `gatsby-plugin-sass`
     },
