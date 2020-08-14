@@ -2,6 +2,7 @@ a.anchor {
     visibility: hidden;
     color: inherit;
     fill: currentColor;
+    // float: left;
     padding-right: 4px;
     margin-left: -20px;
 }
@@ -15,5 +16,18 @@ h1, h2, h3, h4, h5, h6 {
         a.anchor {
             visibility: visible;
         }
+    }
+}
+
+/* https://spigotdesign.com/smooth-scroll-offset-anchor-links-with-css/ */
+:target:before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin-top: -80px;
+
+    @media (max-width: 600px) {
+        height: 64px;
+        margin-top: -64px;
     }
 }
