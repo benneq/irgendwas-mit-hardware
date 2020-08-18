@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import NumberField from '../common/NumberField';
-import PositiveIntegerField from '../common/PositiveIntegerField';
+import NumberField from '@components/common/NumberField';
+import PositiveIntegerField from '@components/common/PositiveIntegerField';
 
 const PCIeBandwidthCalculator: React.FunctionComponent = () => {
     const [value, setValue] = useState({ transferRate: 8, lineCodeWords: 128, lineCodeSymbols: 130, lanes: 16 });

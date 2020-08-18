@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
-import ArrayJoin from '../common/ArrayJoin';
-import PositiveIntegerField from '../common/PositiveIntegerField';
-import NumberField from '../common/NumberField';
+import ArrayJoin from '@components/common/ArrayJoin';
+import PositiveIntegerField from '@components/common/PositiveIntegerField';
+import NumberField from '@components/common/NumberField';
 
 const MemoryChannelCalculator: React.FunctionComponent = () => {
     const [channels, setChannels] = useState(2);

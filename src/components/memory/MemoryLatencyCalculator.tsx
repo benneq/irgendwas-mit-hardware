@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import NumberField from '../common/NumberField';
-import SelectField from '../common/SelectField';
+import NumberField from '@components/common/NumberField';
+import SelectField from '@components/common/SelectField';
 import { isEqual } from 'lodash-es';
-import { ValueOf } from '../../utils/types.util';
+import { ValueOf } from '@utils/types.util';
 
 
 

@@ -2,8 +2,8 @@ import React from "react"
 import "./src/styles/global.scss";
 import { MDXProvider } from "@mdx-js/react"
 import { Typography, TableRow, TableCell, TableBody, TableHead, Table, Divider, ThemeProvider, createMuiTheme, responsiveFontSizes, useMediaQuery } from '@material-ui/core';
-import Layout from './src/components/layout'
-import LightboxImage from "./src/components/common/LightboxImage";
+import Layout from '@components/layout'
+import LightboxImage from "@components/common/LightboxImage";
 
 
 

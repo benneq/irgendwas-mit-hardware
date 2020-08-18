@@ -6,6 +6,9 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-tsconfig-paths`
+    },
+    {
       resolve: `gatsby-plugin-sitemap`
     },
     {

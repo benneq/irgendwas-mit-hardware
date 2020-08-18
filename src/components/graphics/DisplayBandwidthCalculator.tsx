@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
-import NumberFormatter from '../common/NumberFormatter';
-import PositiveIntegerField from '../common/PositiveIntegerField';
-import SelectField from '../common/SelectField';
+import NumberFormatter from '@components/common/NumberFormatter';
+import PositiveIntegerField from '@components/common/PositiveIntegerField';
+import SelectField from '@components/common/SelectField';
 import { isEqual } from 'lodash-es';
-import NumberField from '../common/NumberField';
+import NumberField from '@components/common/NumberField';
 
 
 const timingFormats = [
