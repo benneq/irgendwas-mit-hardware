@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{xJFM:function(n,t,e){"use strict";e.r(t),e.d(t,"_frontmatter",(function(){return c})),e.d(t,"default",(function(){return a}));var o=e("zLVn"),r=(e("q1tI"),e("7ljp")),c={title:"Grafik"},p={_frontmatter:c};function a(n){var t=n.components,e=Object(o.a)(n,["components"]);return Object(r.b)("wrapper",Object.assign({},p,e,{components:t,mdxType:"MDXLayout"}),Object(r.b)("p",null,"Graphics"))}a.isMDXComponent=!0}}]);
-//# sourceMappingURL=component---src-pages-graphics-index-mdx-31048d54835ab928c736.js.map
