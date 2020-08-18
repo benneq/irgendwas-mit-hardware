@@ -15,6 +15,7 @@ const menu = [
         { text: 'Display Standards', to: '/graphics/display-standards' },
         { text: 'Display Schnitstellen', to: '/graphics/display-interfaces' },
         { text: 'Display Synchronisierung', to: '/graphics/display-synchronization' },
+        { text: 'Display Panel', to: '/graphics/display-panel' },
         { text: 'Framerate', to: '/graphics/framerate' },
     ]},
     { text: 'RAM', to: '/memory' },
