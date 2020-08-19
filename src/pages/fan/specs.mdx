@@ -5,6 +5,10 @@ tags: ['Fan', 'Lüfter', 'Drehzahl', 'Durchmesser', 'Volumenstrom', 'Statischer 
 
 
 
+import FanCalculator from '@components/fan/FanCalculator'
+
+
+
 #### Drehzahl
 
 Die Drehzahl eines Lüfters alleine sagt grundsätzlich nichts über dessen Leistung oder Lautstärke aus. Dafür sind noch weitere Parameter wie zum Beispiel Form, Anzahl und Winkel der Rotorblätter notwendig. Auch das Material und die Oberflächenstruktur haben einen Einfluss.
@@ -33,4 +37,8 @@ Außerdem ändert sich der Volumenstrom, bei ansonsten baugleichen Lüftern, mit
 
 Ein hoher statischer Druck ist von Vorteil, wenn die Luft z.B. durch eng aneinaderliege Lamellen befördert werden soll, wie es bei den meisten Radiatoren von Wasserkühlungen der Fall ist.
 
-Der Statische Druck vergrößert sich mit dem Quadrat der Drehzahl: Eine Vervierfachung der Drehzahl resultiert in einer Verdopplung des Drucks. Daher lässt sich dieser Parameter nur durch eine starke Erhöhung der Drehzahl nennenswert beeinflussen. Es ist in diesem Fall also ratsam einen Lüfter zu verwenden, der von Haus aus einen hohen statischen Druck liefert.
+Der Statische Druck ändert sich mit dem Quadrat der Drehzahl. Daher fällt der Druck bei einer Senkung der Drehzahl stark ab.
+
+
+
+<FanCalculator />
