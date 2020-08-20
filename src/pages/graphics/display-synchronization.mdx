@@ -25,7 +25,7 @@ Beim Double Buffering werden zwei getrennte Speicherbereiche für jeweils das Re
 
 In dieser Form des Double Bufferings kann der buffer swap mitten in der Übertragung eines Bildes zum Monitor stattfinden, sodass der obere, bereits übertragene Teil zum alten Frame gehört und der untere Teil zum neuen Frame. Die Folge ist das sogenannte Tearing. Bei entsprechend hohen Frameraten kann das Bild auf dem Monitor auch aus deutlich mehr als 2 Frameteilen bestehen.
 
-<img src={DoubleBufferingImage} />
+<Lightbox><DoubleBufferingImage /></Lightbox>
 
 
 
@@ -39,7 +39,7 @@ Außerdem kann die Framerate halbiert werden, wenn das Rendering des nächsten F
 
 Bei ungleichmäßigen Frameraten unterhalb der Wiederholfrequenz des Monitors kann sogenanntes Stuttering entstehen, indem die Frames in ungleichmäßigen Abständen teilweise mehrfach ausgegeben werden: Die Framerate auf dem Monitor springt dann zwischen der vollen und halben Wiederholfrequenz hin und her.
 
-<img src={DoubleBufferingVSyncImage} />
+<Lightbox><DoubleBufferingVSyncImage /></Lightbox>
 
 
 
@@ -53,7 +53,7 @@ Man erhält also ein vergleichbar niedriges input lag wie beim Double Buffering 
 
 (In manchen Spielen und Grafikbibliotheken wird fälschlicherweise Render Ahead als Triple Buffering bezeichnet, was zum schlechten Image von echtem Triple Buffering beiträgt)
 
-<img src={TripleBufferingVSyncImage} />
+<Lightbox><TripleBufferingVSyncImage /></Lightbox>
 
 
 
@@ -69,7 +69,7 @@ Beim Render Ahead werden Frames in einer Warteschlange (render ahead queue) vorb
 
 Manche Entwickler benutzen Render Ahead mit insgesamt drei Buffern und bezeichnen es fälschlicherweise als Triple Buffering. Diese Technik verhält sich allerdings nur wie Triple Buffering solange die gerenderte Framerate unterhalb der Wiederholfrequnz liegt, weil in diesem Fall die Warteschlange schneller geleert als gefüllt wird. Sobald die Framerate darüber liegt erhält man ein erhöhtes input lag, weil die alten Frames aus der Warteschlange dargestellt werden, obwohl bereits aktuellere Frames eingereiht wurden.
 
-<img src={RenderAheadImage} />
+<Lightbox><RenderAheadImage /></Lightbox>
 
 
 ##### Fast Sync / Enhanced Sync
@@ -86,7 +86,7 @@ Das funktioniert aber nur solange die Framerate sich innerhalb der VRR range bef
 
 Diese Technologie wird auch in mobilen Geräten verwendet, um Energie zu sparen, indem die Wiederholfrequenz temporär gesenkt wird.
 
-<img src={VRRImage} />
+<Lightbox><VRRImage /></Lightbox>
 
 
 

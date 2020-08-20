@@ -14,7 +14,7 @@ import Fan4Pin from '@images/fan/fan4pin.svg';
 #### 2-Pin
 Masse (0 V), Versorgungsspannung (+12 V)
 
-<img src={Fan2Pin} height="80" />
+<Lightbox><Fan2Pin height="80" /></Lightbox>
 
 ##### Drehzahlregelung
 Je nach verwendetem Lüfter ist die Regelung der Drehzahl in einem bestimmten Bereich möglich. Nähere Infos dazu sind dem Datenblatt des jeweiligen Modells zu entnehmen. Erst wenn die Spannung für die Mindestdrehzahl (Anlaufspannung) ausreicht, beginnt sich der Lüfter zu drehen.
@@ -26,7 +26,7 @@ Die Drehzahl kann über die anliegende Spannung verändert werden, welche der Di
 #### 3-Pin (Tacho)
 Masse (0 V), Versorgungsspannung (+12 V), Tachosignal
 
-<img src={Fan3Pin} height="80" />
+<Lightbox><Fan3Pin height="80" /></Lightbox>
 
 Der einzige Unterschied zu 2-Pin-Lüftern ist der Rückkanal über das Tachosignal zur Übertragung der aktuellen Drehzahl.
 
@@ -35,7 +35,7 @@ Der einzige Unterschied zu 2-Pin-Lüftern ist der Rückkanal über das Tachosign
 #### 4-Pin (Tacho und PWM)
 Masse (0 V), Versorgungsspannung (+12 V), Tachosignal, PWM-Signal (Duty Cycle)
 
-<img src={Fan4Pin} height="80" />
+<Lightbox><Fan4Pin height="80" /></Lightbox>
 
 Im Vergleich zu 2- und 3-Pin-Lüftern liegt bei PWM-Lüftern eine konstante Versorgungsspannung an. Die Drehzahl wird über das PWM-Signal geregelt.
 

@@ -25,8 +25,9 @@ const components = {
     th: ({ align, ...props }) => <TableCell align={align || undefined} {...props} />,
     thead: (props) => <TableHead {...props} />,
     hr: Divider,
-    img: (props) => <LightboxImage style={{ marginBottom: '1.45rem' }} {...props} />,
     inlineCode: (props) => <code style={{ fontSize: '1rem' }} {...props} />,
+    // display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;vertical-align:top;width:42px;white-space:nowrap;overflow-wrap:normal;text-align:center
+    Lightbox: (props) => <LightboxImage style={{ marginBottom: '1.45rem' }} {...props} />,
 }
 
 

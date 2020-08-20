@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 type Props = React.ImgHTMLAttributes<HTMLImageElement>;
 
 const LightboxImage: React.FunctionComponent<Props> = (props) => {
-    const { style, ...rest } = props;
+    const { children, style, ...rest } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
 
@@ -37,12 +37,10 @@ const LightboxImage: React.FunctionComponent<Props> = (props) => {
     }
 
     return (
-        <div style={style}>
-            <img
-                style={{ cursor: 'zoom-in' }}
-                onClick={handleOpen}
-                { ...rest }
-            />
+        <>
+            <div style={{ cursor: 'zoom-in', ...style }} onClick={handleOpen}>
+                {children}
+            </div>
             <Modal
                 className={classes.modal}
                 open={open}
@@ -50,11 +48,11 @@ const LightboxImage: React.FunctionComponent<Props> = (props) => {
             >
                 <Fade in={open}>
                     <RemoveScroll className={classes.paper}>
-                        <img {...rest} />
+                        {children}
                     </RemoveScroll>
                 </Fade>
             </Modal>
-        </div>
+        </>
     )
 };
 
