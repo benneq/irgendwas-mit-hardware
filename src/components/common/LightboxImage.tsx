@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, makeStyles } from '@material-ui/core';
+import { Modal, makeStyles, Fade } from '@material-ui/core';
 import { RemoveScroll } from 'react-remove-scroll';
 
 
@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
         width: '80vw',
         backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
         padding: theme.spacing(2),
         outline: 'none'
     },
@@ -38,7 +39,7 @@ const LightboxImage: React.FunctionComponent<Props> = (props) => {
     return (
         <div style={style}>
             <img
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'zoom-in' }}
                 onClick={handleOpen}
                 { ...rest }
             />
@@ -47,9 +48,11 @@ const LightboxImage: React.FunctionComponent<Props> = (props) => {
                 open={open}
                 onClose={handleClose}
             >
-                <RemoveScroll className={classes.paper}>
-                    <img {...rest} />
-                </RemoveScroll>
+                <Fade in={open}>
+                    <RemoveScroll className={classes.paper}>
+                        <img {...rest} />
+                    </RemoveScroll>
+                </Fade>
             </Modal>
         </div>
     )
