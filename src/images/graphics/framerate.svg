@@ -1,66 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 691 268" fill="none">
-    <path stroke="currentColor" stroke-miterlimit="10" d="M20 247V13.37" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" d="M20 8.12l3.5 7-3.5-1.75-3.5 1.75z" pointer-events="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 691 268" fill="none" stroke="currentColor" font-family="Helvetica" font-size="12">
+    <path stroke-miterlimit="10" d="M20 247V13.37" pointer-events="none"/>
+    <path stroke-miterlimit="10" d="M20 8.12l3.5 7-3.5-1.75-3.5 1.75z" pointer-events="none"/>
     <switch transform="rotate(-90 17.5 14)">
         <foreignObject width="23" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:currentColor;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:right">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:right">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">FPS</div>
             </div>
         </foreignObject>
-        <text x="12" y="12" font-family="Helvetica" font-size="12" text-anchor="middle">FPS</text>
+        <text x="12" y="12" text-anchor="middle">FPS</text>
     </switch>
-    <path stroke="currentColor" stroke-miterlimit="10" d="M20 247h603.63" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" d="M628.88 247l-7 3.5 1.75-3.5-1.75-3.5z" pointer-events="none"/>
+    <path stroke-miterlimit="10" d="M20 247h603.63" pointer-events="none"/>
+    <path stroke-miterlimit="10" d="M628.88 247l-7 3.5 1.75-3.5-1.75-3.5z" pointer-events="none"/>
     <switch transform="translate(604.5 250.5)">
         <foreignObject width="23" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:currentColor;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:right">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:right">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">time</div>
             </div>
         </foreignObject>
-        <text x="12" y="12" font-family="Helvetica" font-size="12" text-anchor="middle">time</text>
+        <text x="12" y="12" text-anchor="middle">time</text>
     </switch>
-    <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M30 237V87M40 237V77M50 237V77M60 237V107M70 237V97M80 237V127M90 237V87M100 237V37M110 237V67M120 237V97M130 237V107M140 237V87" pointer-events="none"/>
+    <path stroke-miterlimit="10" stroke-width="2" d="M30 237V87M40 237V77M50 237V77M60 237V107M70 237V97M80 237V127M90 237V87M100 237V37M110 237V67M120 237V97M130 237V107M140 237V87" pointer-events="none"/>
     <path stroke="#b85450" stroke-miterlimit="10" stroke-width="3" d="M150 237v-70" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M160 237v-80M170 237V127M180 237v-90M190 237V87M200 237V57M210 237V77M220 237V97M230 237V87M240 237v-90M250 237V127" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M260 237v-80M270 237v-80M280 237v-90" pointer-events="none"/>
+    <path stroke-miterlimit="10" stroke-width="2" d="M160 237v-80M170 237V127M180 237v-90M190 237V87M200 237V57M210 237V77M220 237V97M230 237V87M240 237v-90M250 237V127" pointer-events="none"/>
+    <path stroke-miterlimit="10" stroke-width="2" d="M260 237v-80M270 237v-80M280 237v-90" pointer-events="none"/>
     <path stroke="#b85450" stroke-miterlimit="10" stroke-width="3" d="M290 237v-70" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M300 237V97M310 237V77M320 237V87M330 237V117M340 237V97M350 237V77M360 237V87M370 237V67M380 237V107M390 237V117M400 237V117M410 237V107M420 237V87M430 237V97M440 237V127M450 237V117" pointer-events="none"/>
+    <path stroke-miterlimit="10" stroke-width="2" d="M300 237V97M310 237V77M320 237V87M330 237V117M340 237V97M350 237V77M360 237V87M370 237V67M380 237V107M390 237V117M400 237V117M410 237V107M420 237V87M430 237V97M440 237V127M450 237V117" pointer-events="none"/>
     <path stroke="#b85450" stroke-miterlimit="10" stroke-width="3" d="M460 237v-40" pointer-events="none"/>
-    <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M470 237V127M480 237V107M490 237V97M500 237V97M510 237V137M520 237V97M530 237V107M540 237V77M550 237V87M560 237V87M570 237V117M580 237V107M590 237V117M600 237V97M610 237V107M620 237V117" pointer-events="none"/>
-    <path stroke="currentColor" stroke-dasharray="3 3" stroke-miterlimit="10" d="M20 197h610" pointer-events="none"/>
+    <path stroke-miterlimit="10" stroke-width="2" d="M470 237V127M480 237V107M490 237V97M500 237V97M510 237V137M520 237V97M530 237V107M540 237V77M550 237V87M560 237V87M570 237V117M580 237V107M590 237V117M600 237V97M610 237V107M620 237V117" pointer-events="none"/>
+    <path stroke-dasharray="3 3" stroke-miterlimit="10" d="M20 197h610" pointer-events="none"/>
     <switch transform="translate(641.5 190.5)">
         <foreignObject width="19" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:currentColor;line-height:1.2;vertical-align:top;width:20px;white-space:nowrap;overflow-wrap:normal;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;;line-height:1.2;vertical-align:top;width:20px;white-space:nowrap;overflow-wrap:normal;text-align:left">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">min</div>
             </div>
         </foreignObject>
-        <text x="10" y="12" font-family="Helvetica" font-size="12" text-anchor="middle">min</text>
+        <text x="10" y="12" text-anchor="middle">min</text>
     </switch>
-    <path stroke="currentColor" stroke-dasharray="3 3" stroke-miterlimit="10" d="M631 37H20" pointer-events="none"/>
+    <path stroke-dasharray="3 3" stroke-miterlimit="10" d="M631 37H20" pointer-events="none"/>
     <switch transform="translate(641.5 30.5)">
         <foreignObject width="23" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:currentColor;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;;line-height:1.2;vertical-align:top;width:24px;white-space:nowrap;overflow-wrap:normal;text-align:left">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">max</div>
             </div>
         </foreignObject>
-        <text x="12" y="12" font-family="Helvetica" font-size="12" text-anchor="middle">max</text>
+        <text x="12" y="12" text-anchor="middle">max</text>
     </switch>
-    <path stroke="currentColor" stroke-dasharray="3 3" stroke-miterlimit="10" d="M632 107H20" pointer-events="none"/>
+    <path stroke-dasharray="3 3" stroke-miterlimit="10" d="M632 107H20" pointer-events="none"/>
     <switch transform="translate(641.5 100.5)">
         <foreignObject width="19" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:currentColor;line-height:1.2;vertical-align:top;width:20px;white-space:nowrap;overflow-wrap:normal;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;;line-height:1.2;vertical-align:top;width:20px;white-space:nowrap;overflow-wrap:normal;text-align:left">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">avg</div>
             </div>
         </foreignObject>
-        <text x="10" y="12" font-family="Helvetica" font-size="12" text-anchor="middle">avg</text>
+        <text x="10" y="12" text-anchor="middle">avg</text>
     </switch>
     <path stroke="#b85450" stroke-dasharray="3 3" stroke-miterlimit="10" d="M20 177h613" pointer-events="none"/>
     <switch transform="translate(641.5 170.5)">
         <foreignObject width="42" height="12" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;font-size:12px;font-family:Helvetica;color:#b85450;line-height:1.2;vertical-align:top;width:44px;white-space:nowrap;overflow-wrap:normal;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;color:#b85450;line-height:1.2;vertical-align:top;width:44px;white-space:nowrap;overflow-wrap:normal;text-align:left">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal">5 % low</div>
             </div>
         </foreignObject>
-        <text x="21" y="12" fill="#B85450" font-family="Helvetica" font-size="12" text-anchor="middle">5 % low</text>
+        <text x="21" y="12" fill="#B85450" text-anchor="middle">5 % low</text>
     </switch>
 </svg>
