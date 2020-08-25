@@ -1,0 +1,49 @@
+---
+title: Speicher
+tags: ['RAM', 'Arbeitsspeicher', 'Channel', 'Multi-Channel', 'Dual-Channel']
+---
+
+
+
+import MemoryChannelCalculator from '@components/memory/MemoryChannelCalculator'
+
+
+
+#### Erläuterung
+
+Durch Multi-Channel Architektur kann die Transferrate zwischen den Speichermodulen und dem Speichercontroller erhöht werden. Diese skaliert theoretisch exakt mit der Anzahl der Channels.
+
+Je nach verwendeter Plattform wird z.B. Dual-Channel, Triple-Channel oder Quad-Channel unterstützt, mit entsprechend 2, 3 oder 4 Channels.
+
+Die Zuordnung zwischen Slots und Channels kann dem Handbuch des Mainboards entnommen werden.
+
+
+
+#### Stabilität, Performance, Kompatibilität
+
+Die Module sollten alle eine identische Organisation der Speicherchips verfügen. Die Anzahl der Chips und Bestückung der Vorder- und Rückseite der Module sollte also gleich sein.
+
+Die Taktraten und Timings werden durch das langsamte Modul bestimmt.
+
+
+
+#### Unterschiedliche Modulgrößen
+
+Der Betrieb von unterschiedlich großen Speichermodulen wird grundsätzlich unterstützt, solange in jedem Channel die gleiche Menge an Speicher verbaut ist, wie z.B. bei einer Dual-Channel Konfiguration mit 2x 4 GB in Channel A und 1x 8 GB in Kanal B.
+
+
+
+##### Asymmetric Mode mit Flex Mode
+
+Auf modernen Plattformen wird auch eine asymmetrische Konfiguration unterstützt, bei der nicht alle Channels über die gleiche Menge an Speicher verfügen.
+
+Durch Flex Mode kann dabei die Speichermenge, die in allen Channels vorhanden ist, mit voller Multi-Channel Performance benutzt. In einem Dual-Channel System mit 4 GB in Channel A und 8 GB in Channel B können also 2x 4 GB im Dual-Channel benutzt werden und die überschüssigen 1x 4 GB aus Channel B arbeiten im Single-Channel Modus.
+
+
+
+#### Multi-Channel Rechner
+
+<MemoryChannelCalculator />
+
+
+

@@ -18,7 +18,10 @@ const menu = [
         { text: 'Display Panel', to: '/graphics/display-panel' },
         { text: 'Framerate', to: '/graphics/framerate' },
     ]},
-    { text: 'RAM', to: '/memory' },
+    { text: 'RAM', children: [
+        { text: 'Specs', to: '/memory' },
+        { text: 'Multi-Channel', to: '/memory/multi-channel' },
+    ]},
     { text: 'USB', to: '/usb' },
     { text: 'PCIe', to: '/pcie' },
     { text: 'Speichermedien', children: [
