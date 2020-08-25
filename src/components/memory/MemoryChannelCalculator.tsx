@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import ArrayJoin from '@components/common/ArrayJoin';
 import PositiveIntegerField from '@components/common/PositiveIntegerField';
 import NumberField from '@components/common/NumberField';
+import { times } from 'lodash-es';
 
 const MemoryChannelCalculator: React.FunctionComponent = () => {
     const [channels, setChannels] = useState(2);
@@ -80,13 +81,28 @@ const MemoryChannelCalculator: React.FunctionComponent = () => {
                     </Grid>
                 )}
             </Grid>
-            <Grid container spacing={2} direction="column">
-                {assignments.map((assignment, i) => 
-                    <Grid key={i} item>
-                        Channel {String.fromCharCode(i+65)}: <ArrayJoin value={assignment.filter(module => module !== 0).map(module => module + " GB")} separator={", "} />
-                    </Grid>
-                )}
-            </Grid>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Channel</TableCell>
+                        {times(slotsPerChannel, (i) =>
+                            <TableCell key={i}>Module</TableCell>    
+                        )}
+                        <TableCell>Total</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {assignments.map((assignment, i) =>
+                        <TableRow key={i}>
+                            <TableCell>{String.fromCharCode(i+65)}</TableCell>
+                            {times(slotsPerChannel, (i) =>
+                                <TableCell key={i}>{assignment[i] ? `${assignment[i]} GB` : ''}</TableCell>
+                            )}
+                            <TableCell>{assignment.reduce((acc, curr) => acc + curr, 0)} GB</TableCell>
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
         </>
     );
 };
