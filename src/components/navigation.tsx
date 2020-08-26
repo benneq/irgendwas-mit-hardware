@@ -21,6 +21,7 @@ const menu = [
     { text: 'RAM', children: [
         { text: 'Specs', to: '/memory' },
         { text: 'Multi-Channel', to: '/memory/multi-channel' },
+        { text: 'Topologie', to: '/memory/topology' },
     ]},
     { text: 'USB', to: '/usb' },
     { text: 'PCIe', to: '/pcie' },

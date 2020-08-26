@@ -1,0 +1,42 @@
+---
+title: Speicher Topologie
+tags: ['RAM', 'Arbeitsspeicher', 'Topologie', 'topology', 'daisy chain']
+---
+
+
+
+import Topology1Dimm from '@images/memory/topology1Dimm.svg';
+import TopologyDaisyChain from '@images/memory/topologyDaisyChain.svg';
+import TopologyT from '@images/memory/topologyT.svg';
+
+
+
+Beim der Auswahl der Speicher Topologie geht es darum die Signalwege vom Speichercontroller zu den Speichermodulen zu optimieren, und damit den Speichercontroller zu entlasten, indem die Länge der Leiterbahnen zu allen Speichermodulen möglichst gleich gehalten wird und Inteferenzen minimiert werden.
+
+
+
+#### 1 Modul pro Channel
+
+Optimal wenn nur ein DIMM Slot pro Channel benutzt wird, weil die möglichen Probleme durch Mehrfachbestückung eines Channels ausgeschlossen werden. Zudem werden die Längen der Leiterbahnen minimiert. Der Nachteil ist offensichtlich, dass man bei der Anzahl der Speichermodule limitiert ist.
+
+<Lightbox><Topology1Dimm height="180" /></Lightbox>
+
+
+
+#### Daisy Chain 
+
+Etwas schlechtere Leistung als 1 Modul pro Channel, weil die Leiterbahnen zum zweiten Channel länger ausfallen. Aber ermöglicht mit weiteren Einschränkungen den Betrieb von mehreren Modulen pro Channel.
+
+<Lightbox><TopologyDaisyChain height="180" /></Lightbox>
+
+
+
+#### T-Topologie
+
+Optimal wenn alle DIMM Slots benutzt werden, weil die Länge der Leitungen zu allen Modulen gleich ist. Beim Betrieb mit einem Speichermodul pro Channel hat man im Vergleich zu Daisy Chain den Nachteil, dass die Leitungslänge zum ersten DIMM Slot jedes Channels in jedem Fall länger ist.
+
+<Lightbox><TopologyT height="180" /></Lightbox>
+
+
+
+<!-- https://www.youtube.com/watch?v=3vQwGGbW1AE -->
