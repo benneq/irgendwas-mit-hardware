@@ -15,6 +15,7 @@
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/memory/multi-channel/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/memory/topology/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/network/cable/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/network/device/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/network/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/network/wi-fi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://benneq.github.io/irgendwas-mit-hardware/irgendwas-mit-hardware/pcie/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
