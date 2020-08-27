@@ -8,6 +8,7 @@ import NavigationList from './navigationList';
 const menu = [
     { text: 'Home', to: '/home' },
     { text: 'Netzwerk', children: [
+        { text: 'Geräte', to: '/network/device'},
         { text: 'Kabel', to: '/network/cable' },
         { text: 'WLAN / Wi-Fi', to: '/network/wi-fi' },
     ]},
