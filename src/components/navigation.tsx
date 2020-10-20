@@ -10,6 +10,7 @@ const menu = [
     { text: 'Netzwerk', children: [
         { text: 'Geräte', to: '/network/device'},
         { text: 'Kabel', to: '/network/cable' },
+        { text: 'Power over Ethernet', to: '/network/poe' },
         { text: 'WLAN / Wi-Fi', to: '/network/wi-fi' },
     ]},
     { text: 'Grafik', children: [
