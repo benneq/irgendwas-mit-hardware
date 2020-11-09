@@ -1,0 +1,28 @@
+---
+title: Performance
+tags: ['RAM', 'Arbeitsspeicher', 'Performance']
+---
+
+
+
+###### 1. Speichergröße
+
+Wenn der Arbeitsspeicher voll läuft und ausgelagert werden muss, sinkt die Performance enorm, weil die Daten dann von der vielfach langsameren Festplatte gelesen werden müssen.
+
+
+
+###### 2. Channels
+
+Jeder zusätzliche Channel erhöht die maximale Speicherbandbreite, ohne dass es irgendwelche Nachteile mit sich bringt. Also sollte dafür gesorgt werden, dass auch jeder vom Speichercontroller bereitgestellte Channel genutzt wird. Der Sprung von z.B. 2 auf 4 Channels resultiert in einer verdoppelten Bandbreite.
+
+
+
+###### 3. Taktrate
+
+Die Speicherbandbreite skaliert linear mit dem Takt. Mehr Takt bedeutet also mehr Bandbreite.
+
+
+
+###### 4. Ranks
+
+Mehr Ranks resultieren in einer besseren Auslastung der theoretisch verfügbaren maximalen Speicherbandbreite. Gleichzeitig wird dadurch allerdings auch der Speichercontroller stärker belastet, wodurch nicht mehr so hohe Taktraten erreicht werden können.

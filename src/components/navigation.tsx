@@ -24,6 +24,7 @@ const menu = [
         { text: 'Specs', to: '/memory' },
         { text: 'Multi-Channel', to: '/memory/multi-channel' },
         { text: 'Topologie', to: '/memory/topology' },
+        { text: 'Performance', to: '/memory/performance' },
     ]},
     { text: 'USB', to: '/usb' },
     { text: 'PCIe', to: '/pcie' },
